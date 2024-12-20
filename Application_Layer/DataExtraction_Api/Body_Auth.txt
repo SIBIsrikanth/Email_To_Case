@@ -1,0 +1,2 @@
+﻿    "email":"emorder-bot@novozymes.com",
+    "password":"Em@B@t!2024"

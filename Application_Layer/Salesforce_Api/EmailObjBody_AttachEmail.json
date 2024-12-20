@@ -1,0 +1,8 @@
+﻿"ParentId": "{0}",
+"fromAddress": "{1}",
+"fromName": "{2}",
+"Subject": "{3}",
+"htmlBody": {4},
+"ToAddress": "{5}",
+"OTCEmailHTMLBodyContd__c": {6},
+"Sentiment__c": "{7}"

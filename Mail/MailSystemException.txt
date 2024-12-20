@@ -1,0 +1,13 @@
+Hi There,<br/><br/>
+
+<b>Please note that the <Processname> Process has failed due to a system Exception.</b><br/><br/>
+Please find the details below.<br/><br/>
+
+Reason for failure: {0} <br/><br/><br/>
+
+
+<i>Note: This is a system generated email. Please do not reply back.<br/><br/></i>
+
+Regards,<br/>
+{1} Bot<br/>
+{2}

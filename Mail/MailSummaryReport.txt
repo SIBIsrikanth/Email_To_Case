@@ -1,0 +1,12 @@
+Hi There,<br/><br/>
+
+<b>Please note that the <Processname> Process has finished the Execution for all transactions. Please find below the execution summary:</b>
+<br/>
+{0}
+<br/><br/>
+
+<i>Note: This is a system generated email. Please do not reply back.<br/><br/></i>
+
+Regards,<br/>
+{1} Bot<br/>
+{2}

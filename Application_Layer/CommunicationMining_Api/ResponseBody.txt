@@ -1,0 +1,41 @@
+{
+
+    "documents": [
+
+    {
+
+      "raw_email": {
+
+        "body": {
+
+          "html": "{0}"
+
+        },
+
+        "headers": {
+
+          "raw": "Message-ID: <{1}>\nDate: {2}\nSubject: {3}\nFrom: {4}\nTo: {5}"
+
+        }
+
+      },
+
+      "user_properties": {
+
+        "string:City": "Bucharest"
+
+      }
+
+    }
+
+ 
+
+  ],
+
+  "include_comments": false,
+
+  "threshold": 0.25,
+
+  "transform_tag": "generic.0.CONVKER5"
+
+}
