@@ -32,7 +32,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1232,2426</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1232,2253</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Salesforce_CreateACase_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="68">
@@ -127,7 +127,7 @@
       <AssemblyReference>System.Linq.Async</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Salesforce_CreateEmailObject" sap:VirtualizedContainerService.HintSize="1099,2361" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Salesforce_CreateEmailObject" sap:VirtualizedContainerService.HintSize="1099,2188" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="bodyTxt" />
       <Variable x:TypeArguments="x:String" Name="responseJson" />
@@ -424,7 +424,6 @@ in_caseID.Trim, in_fromEmail.Trim, in_fromName.Trim, in_subject.Trim, htmlBody, 
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="emailObjbody.txt" sap:VirtualizedContainerService.HintSize="1037,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[bodyTxt]" />
     <If Condition="[statusCode = 200 or statusCode = 201]" DisplayName="If Status Code = 200 or 201" sap:VirtualizedContainerService.HintSize="1037,219" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">

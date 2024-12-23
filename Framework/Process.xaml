@@ -202,7 +202,7 @@
               <OutArgument x:TypeArguments="x:String">[strSwitchType]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[if(strMailBoxName.ToLower="bioagcs@novozymes.com","bioAgCS@novozymes.com",if(strAiMailSubType.ToLower.Trim="new order creation","new order type","other"))]</InArgument>
+              <InArgument x:TypeArguments="x:String">[if(strMailBoxName.ToLower="bioagcs@novozymes.com","bioAgCS@novozymes.com",if(strAiMailSubType.ToLower.Trim="new order creation","new order creation","other"))]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
@@ -396,7 +396,7 @@
                   <FlowDecision.False>
                     <FlowDecision x:Name="__ReferenceID21" DisplayName="Prediction &gt;75" sap:VirtualizedContainerService.HintSize="83,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
                       <FlowDecision.Condition>
-                        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="if(String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;CM_Prediction&quot;).ToString),False,if(CInt(CDbl(in_TransactionItem.SpecificContent(&quot;CM_Prediction&quot;).ToString)*100)&gt;cint(in_Config(&quot;Threshold&quot;).ToString) and strAiMailSubType.ToLower.Equals(&quot;new order type&quot;),True,False))" />
+                        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="if(iSentiment&gt;=cint(in_Config(&quot;Threshold&quot;).ToString) and strAiMailSubType.trim.ToLower.Equals(&quot;new order creation&quot;),True,False)" />
                       </FlowDecision.Condition>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -422,7 +422,7 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[strSwitchType]" sap:VirtualizedContainerService.HintSize="497,161" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                            <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[strSwitchType]" sap:VirtualizedContainerService.HintSize="926,844" sap2010:WorkflowViewState.IdRef="Switch`1_2">
                               <Switch.Default>
                                 <Flowchart sap:VirtualizedContainerService.HintSize="726,637" sap2010:WorkflowViewState.IdRef="Flowchart_4">
                                   <sap:WorkflowViewStateService.ViewState>
@@ -512,7 +512,7 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                               </Assign>
-                              <Flowchart x:Key="new order type" sap:VirtualizedContainerService.HintSize="886,637" sap2010:WorkflowViewState.IdRef="Flowchart_3">
+                              <Flowchart x:Key="new order creation" sap:VirtualizedContainerService.HintSize="886,637" sap2010:WorkflowViewState.IdRef="Flowchart_3">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -528,7 +528,7 @@
                                 </Flowchart.StartNode>
                                 <FlowDecision x:Name="__ReferenceID4" DisplayName="Customer account exists..?" sap:VirtualizedContainerService.HintSize="147,87" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
                                   <FlowDecision.Condition>
-                                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="not blnCustomerAccountNotFound" />
+                                    <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="blnCustomerAccountNotFound" />
                                   </FlowDecision.Condition>
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -628,7 +628,8 @@
                                 <x:Reference>__ReferenceID3</x:Reference>
                               </Flowchart>
                             </Switch>
-                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="497,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="926,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;new order created&quot;]" />
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="926,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
                               <ui:CommentOut.Body>
                                 <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="788,748" sap2010:WorkflowViewState.IdRef="Sequence_10">
                                   <sap:WorkflowViewStateService.ViewState>
@@ -729,7 +730,7 @@
                                   <av:PointCollection x:Key="ConnectorLocation">1172,780 1172,810 1183,810 1183,830</av:PointCollection>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence sap2010:Annotation.AnnotationText="Create case usin SF API" sap:VirtualizedContainerService.HintSize="1634,2932" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                              <Sequence sap2010:Annotation.AnnotationText="Create case usin SF API" sap:VirtualizedContainerService.HintSize="2146,3959" sap2010:WorkflowViewState.IdRef="Sequence_3">
                                 <Sequence.Variables>
                                   <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" Name="jsonObject_1" />
                                 </Sequence.Variables>
@@ -739,83 +740,35 @@
                                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Salesforce_CreateACase workflow" sap:VirtualizedContainerService.HintSize="1572,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Application_Layer\Salesforce_Api\Salesforce_CreateACase.xaml">
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Salesforce_CreateACase workflow" sap:VirtualizedContainerService.HintSize="2084,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Application_Layer\Salesforce_Api\Salesforce_CreateACase.xaml">
                                   <ui:InvokeWorkflowFile.Arguments>
-                                    <OutArgument x:TypeArguments="x:String" x:Key="out_caseID">
-                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strCaseID" />
-                                    </OutArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_contactID">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strContactID" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_priority">
-                                      <Literal x:TypeArguments="x:String">Normal</Literal>
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_caseCreationAPI">
-                                      <Literal x:TypeArguments="x:String">https://novonesis--uat.sandbox.my.salesforce.com/services/data/v58.0/sobjects/Case</Literal>
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_type">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="if(String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;CM_Type&quot;).ToString),&quot;&quot;,in_TransactionItem.SpecificContent(&quot;CM_Type&quot;).ToString)" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_subject">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;emailSubject&quot;).ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_description">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;LatestMailBody&quot;).ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_recordTypeID">
-                                      <Literal x:TypeArguments="x:String">0122j00000006E4AAI</Literal>
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_subType">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="if(String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;CM_SubType&quot;).ToString),&quot;&quot;,in_TransactionItem.SpecificContent(&quot;CM_SubType&quot;).ToString)" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_sentiment">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="iSentiment.ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_ownerID">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strOwnerID" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_AccountID">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAccountID" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_OTCFirst_RecordType">
-                                      <Literal x:TypeArguments="x:String">Customer Service Request Record Type</Literal>
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_Active">
-                                      <Literal x:TypeArguments="x:String">true</Literal>
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_Origin">
-                                      <Literal x:TypeArguments="x:String">Email</Literal>
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_Status">
-                                      <Literal x:TypeArguments="x:String">NEW</Literal>
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_OTC_Internal">
-                                      <Literal x:TypeArguments="x:String">false</Literal>
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_OTC_MailBox_Origin">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strOTCSharedMailBoxName" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_OTCFrom_Address">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;FromEmailAddress&quot;).ToString" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_Auth_APi">
-                                      <Literal x:TypeArguments="x:String">https://test.salesforce.com/services/oauth2/token?grant_type=password&amp;client_id=3MVG9KAEr0ABaqiohxfQdw9yBxc3Ws5GEI54gulxjk_k72Xj5VFJSrLKURELTvlAX5oiWvISBvWK9rBnaZrVi&amp;client_secret=C7E295C4B370F5FD7058EE4C448B5165BB7F42EF8C51DF7E72EFBD57869A51CC&amp;username=da_sf_user@novozymes.com.uat&amp;password=Robotic_Sanbox@2025EXneHCL96FakvIgCdySfRiGX</Literal>
-                                    </InArgument>
-                                    <OutArgument x:TypeArguments="x:String" x:Key="out_CaseNumber">
-                                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strCaseNumber" />
-                                    </OutArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_PONumber">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="if(String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;PurchaseOrderNumber&quot;).ToString),&quot;&quot;,in_TransactionItem.SpecificContent(&quot;PurchaseOrderNumber&quot;).ToString)" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_SONumber">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="if(String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;SalesOrderNumber&quot;).ToString),&quot;&quot;,in_TransactionItem.SpecificContent(&quot;SalesOrderNumber&quot;).ToString)" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_DeliveryNumber">
-                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="if(String.IsNullOrEmpty(in_TransactionItem.SpecificContent(&quot;DeliveryNumber&quot;).ToString),&quot;&quot;,in_TransactionItem.SpecificContent(&quot;DeliveryNumber&quot;).ToString)" />
-                                    </InArgument>
+                                    <OutArgument x:TypeArguments="x:String" x:Key="out_caseID">[strCaseID]</OutArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_contactID">[strContactID]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_priority">Normal</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_caseCreationAPI">https://novonesis--uat.sandbox.my.salesforce.com/services/data/v58.0/sobjects/Case</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_type">[if(String.IsNullOrEmpty(in_TransactionItem.SpecificContent("CM_Type").ToString),"",in_TransactionItem.SpecificContent("CM_Type").ToString)]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_subject">[in_TransactionItem.SpecificContent("emailSubject").ToString]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_description">[in_TransactionItem.SpecificContent("LatestMailBody").ToString]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_recordTypeID">0122j00000006E4AAI</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_subType">[if(String.IsNullOrEmpty(in_TransactionItem.SpecificContent("CM_SubType").ToString),"",in_TransactionItem.SpecificContent("CM_SubType").ToString)]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_sentiment">[iSentiment.ToString]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ownerID">[strOwnerID]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_AccountID">[strAccountID]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_OTCFirst_RecordType">Customer Service Request Record Type</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Active">true</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Origin">Email</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Status">NEW</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_OTC_Internal">false</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_OTC_MailBox_Origin">[strOTCSharedMailBoxName]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_OTCFrom_Address">[in_TransactionItem.SpecificContent("FromEmailAddress").ToString]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Auth_APi">https://test.salesforce.com/services/oauth2/token?grant_type=password&amp;client_id=3MVG9KAEr0ABaqiohxfQdw9yBxc3Ws5GEI54gulxjk_k72Xj5VFJSrLKURELTvlAX5oiWvISBvWK9rBnaZrVi&amp;client_secret=C7E295C4B370F5FD7058EE4C448B5165BB7F42EF8C51DF7E72EFBD57869A51CC&amp;username=da_sf_user@novozymes.com.uat&amp;password=Robotic_Sanbox@2025EXneHCL96FakvIgCdySfRiGX</InArgument>
+                                    <OutArgument x:TypeArguments="x:String" x:Key="out_CaseNumber">[strCaseNumber]</OutArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_PONumber">[if(String.IsNullOrEmpty(in_TransactionItem.SpecificContent("PurchaseOrderNumber").ToString),"",in_TransactionItem.SpecificContent("PurchaseOrderNumber").ToString)]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_SONumber">[if(String.IsNullOrEmpty(in_TransactionItem.SpecificContent("SalesOrderNumber").ToString),"",in_TransactionItem.SpecificContent("SalesOrderNumber").ToString)]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_DeliveryNumber">[if(String.IsNullOrEmpty(in_TransactionItem.SpecificContent("DeliveryNumber").ToString),"",in_TransactionItem.SpecificContent("DeliveryNumber").ToString)]</InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
-                                <Assign sap:VirtualizedContainerService.HintSize="1572,61" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                <Assign sap:VirtualizedContainerService.HintSize="2084,61" sap2010:WorkflowViewState.IdRef="Assign_18">
                                   <Assign.To>
                                     <OutArgument x:TypeArguments="x:String">[strSFCaseCreationTime]</OutArgument>
                                   </Assign.To>
@@ -823,7 +776,7 @@
                                     <InArgument x:TypeArguments="x:String">[DateTime.Now.ToString]</InArgument>
                                   </Assign.Value>
                                 </Assign>
-                                <If Condition="[convert.ToBoolean(in_TransactionItem.SpecificContent(&quot;IsLatestMailBody&quot;))]" sap:VirtualizedContainerService.HintSize="1572,52" sap2010:WorkflowViewState.IdRef="If_8">
+                                <If Condition="[convert.ToBoolean(in_TransactionItem.SpecificContent(&quot;IsLatestMailBody&quot;))]" sap:VirtualizedContainerService.HintSize="2084,52" sap2010:WorkflowViewState.IdRef="If_8">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -877,7 +830,7 @@
                                     </Sequence>
                                   </If.Else>
                                 </If>
-                                <If Condition="[Not Convert.ToBoolean(in_TransactionItem.SpecificContent(&quot;IsAttachmentFound&quot;))]" sap:VirtualizedContainerService.HintSize="1572,2352" sap2010:WorkflowViewState.IdRef="If_16">
+                                <If Condition="[Not Convert.ToBoolean(in_TransactionItem.SpecificContent(&quot;IsAttachmentFound&quot;))]" sap:VirtualizedContainerService.HintSize="2084,3379" sap2010:WorkflowViewState.IdRef="If_16">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -885,14 +838,14 @@
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
                                   <If.Then>
-                                    <Sequence sap:VirtualizedContainerService.HintSize="462,192" sap2010:WorkflowViewState.IdRef="Sequence_69">
+                                    <Sequence sap:VirtualizedContainerService.HintSize="620,3220" sap2010:WorkflowViewState.IdRef="Sequence_69">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <Sequence DisplayName="Data Extraction" sap:VirtualizedContainerService.HintSize="400,81" sap2010:WorkflowViewState.IdRef="Sequence_68">
+                                      <Sequence DisplayName="Data Extraction" sap:VirtualizedContainerService.HintSize="558,3109" sap2010:WorkflowViewState.IdRef="Sequence_68">
                                         <Sequence.Variables>
                                           <Variable x:TypeArguments="x:String" Name="strToken" />
                                           <Variable x:TypeArguments="x:String" Name="strSubjectBodyFilePath" />
@@ -900,7 +853,7 @@
                                         </Sequence.Variables>
                                         <sap:WorkflowViewStateService.ViewState>
                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
@@ -1105,20 +1058,20 @@
                                     </Sequence>
                                   </If.Then>
                                   <If.Else>
-                                    <Sequence sap:VirtualizedContainerService.HintSize="1065,2193" sap2010:WorkflowViewState.IdRef="Sequence_83">
+                                    <Sequence sap:VirtualizedContainerService.HintSize="1419,2255" sap2010:WorkflowViewState.IdRef="Sequence_83">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_Config(&quot;ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;ApplicationSecret&quot;).ToString]" AuthenticationType="InteractiveToken" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="1003,2082" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_5" OAuthApplication="Custom" Services="Files, Mail, Shared" Tenant="[in_Config(&quot;TenantID&quot;).ToString]">
+                                      <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_Config(&quot;ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;ApplicationSecret&quot;).ToString]" AuthenticationType="InteractiveToken" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="1357,2144" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_5" OAuthApplication="Custom" Services="Files, Mail, Shared" Tenant="[in_Config(&quot;TenantID&quot;).ToString]">
                                         <uma:Office365ApplicationScope.Body>
                                           <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                                             <ActivityAction.Argument>
                                               <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                                             </ActivityAction.Argument>
-                                            <Sequence sap:VirtualizedContainerService.HintSize="969,1995" sap2010:WorkflowViewState.IdRef="Sequence_81">
+                                            <Sequence sap:VirtualizedContainerService.HintSize="1323,2057" sap2010:WorkflowViewState.IdRef="Sequence_81">
                                               <Sequence.Variables>
                                                 <Variable x:TypeArguments="umm:Office365Message[]" Name="lstEmails" />
                                               </Sequence.Variables>
@@ -1128,8 +1081,8 @@
                                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <umam:GetMail EmailId="{x:Null}" Account="myorder@novozymes.com" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="907,25" sap2010:WorkflowViewState.IdRef="GetMail_6" MailFolder="Inbox" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Query="[&quot;InternetMessageId eq '&quot;+in_TransactionItem.SpecificContent(&quot;MessageID&quot;).ToString+&quot;'&quot;]" Results="[lstEmails]" Top="1" />
-                                              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="907,52" sap2010:WorkflowViewState.IdRef="CommentOut_13">
+                                              <umam:GetMail EmailId="{x:Null}" Account="myorder@novozymes.com" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="1261,25" sap2010:WorkflowViewState.IdRef="GetMail_6" MailFolder="Inbox" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Query="[&quot;InternetMessageId eq '&quot;+in_TransactionItem.SpecificContent(&quot;MessageID&quot;).ToString+&quot;'&quot;]" Results="[lstEmails]" Top="1" />
+                                              <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1261,52" sap2010:WorkflowViewState.IdRef="CommentOut_13">
                                                 <ui:CommentOut.Body>
                                                   <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,136" sap2010:WorkflowViewState.IdRef="Sequence_70">
                                                     <sap:WorkflowViewStateService.ViewState>
@@ -1147,8 +1100,8 @@
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
                                               </ui:CommentOut>
-                                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="907,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[lstEmails.Count]" />
-                                              <Sequence DisplayName="saving the PDF/word" sap:VirtualizedContainerService.HintSize="907,1595" sap2010:WorkflowViewState.IdRef="Sequence_80">
+                                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1261,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[lstEmails.Count]" />
+                                              <Sequence DisplayName="saving the PDF/word" sap:VirtualizedContainerService.HintSize="1261,1657" sap2010:WorkflowViewState.IdRef="Sequence_80">
                                                 <Sequence.Variables>
                                                   <Variable x:TypeArguments="x:String" Name="strPDFAttachmentFolder" />
                                                 </Sequence.Variables>
@@ -1157,7 +1110,7 @@
                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
-                                                <Assign sap:VirtualizedContainerService.HintSize="845,61" sap2010:WorkflowViewState.IdRef="Assign_45">
+                                                <Assign sap:VirtualizedContainerService.HintSize="1199,61" sap2010:WorkflowViewState.IdRef="Assign_45">
                                                   <Assign.To>
                                                     <OutArgument x:TypeArguments="x:String">[strPDFAttachmentFolder]</OutArgument>
                                                   </Assign.To>
@@ -1165,20 +1118,21 @@
                                                     <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory+"\PDF_Folder"]</InArgument>
                                                   </Assign.Value>
                                                 </Assign>
-                                                <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" FolderPath="[strPDFAttachmentFolder]" sap:VirtualizedContainerService.HintSize="845,90" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_3" Message="[CType(lstEmails(0),System.Net.Mail.MailMessage)]" OverwriteExisting="False" />
-                                                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="845,803" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[system.io.Directory.GetFiles(strPDFAttachmentFolder)]">
+                                                <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" FolderPath="[strPDFAttachmentFolder]" sap:VirtualizedContainerService.HintSize="1199,90" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_3" Message="[CType(lstEmails(0),System.Net.Mail.MailMessage)]" OverwriteExisting="False" />
+                                                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1199,52" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[system.io.Directory.GetFiles(strPDFAttachmentFolder)]">
                                                   <ui:ForEach.Body>
                                                     <ActivityAction x:TypeArguments="x:String">
                                                       <ActivityAction.Argument>
                                                         <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                                                       </ActivityAction.Argument>
-                                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="648,678" sap2010:WorkflowViewState.IdRef="Sequence_73">
+                                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,81" sap2010:WorkflowViewState.IdRef="Sequence_73">
                                                         <Sequence.Variables>
                                                           <Variable x:TypeArguments="x:String" Name="strTokenm" />
                                                         </Sequence.Variables>
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
                                                         <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="586,52" sap2010:WorkflowViewState.IdRef="CommentOut_16">
@@ -1245,37 +1199,17 @@
                                                               </ui:CommentOut>
                                                               <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Api_SF_ReportAttachment workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_38" UnSafe="False" WorkflowFileName="Application_Layer\Salesforce_Api\SalesForce_ReportAttachment.xaml">
                                                                 <ui:InvokeWorkflowFile.Arguments>
-                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_ComplaintRecordId">
-                                                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strEmailObjID" />
-                                                                  </InArgument>
-                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReportPath">
-                                                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="item.ToString" />
-                                                                  </InArgument>
-                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_ContentVersionAPI">
-                                                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DocumentAttachment_API_ContentVersion&quot;).ToString" />
-                                                                  </InArgument>
-                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReportTitle">
-                                                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="System.io.Path.GetFileNameWithoutExtension(item.ToString)" />
-                                                                  </InArgument>
-                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReportPathOnClient">
-                                                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="System.io.Path.GetFileName(item.ToString)" />
-                                                                  </InArgument>
-                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_OwnerId">
-                                                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;OwnerId_UserId&quot;).ToString" />
-                                                                  </InArgument>
-                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_GetContentIdAPI">
-                                                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DocumentAttachment_API_GetContentIdAPI&quot;).ToString" />
-                                                                  </InArgument>
-                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_ContentDocumentLinkAPI">
-                                                                    <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Config(&quot;DocumentAttachment_API_ContentDocumentLink&quot;).ToString" />
-                                                                  </InArgument>
-                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_Visibility">
-                                                                    <Literal x:TypeArguments="x:String">AllUsers</Literal>
-                                                                  </InArgument>
+                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_ComplaintRecordId">[strEmailObjID]</InArgument>
+                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReportPath">[item.ToString]</InArgument>
+                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_ContentVersionAPI">[in_Config("DocumentAttachment_API_ContentVersion").ToString]</InArgument>
+                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReportTitle">[System.io.Path.GetFileNameWithoutExtension(item.ToString)]</InArgument>
+                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_ReportPathOnClient">[System.io.Path.GetFileName(item.ToString)]</InArgument>
+                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_OwnerId">[in_Config("OwnerId_UserId").ToString]</InArgument>
+                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_GetContentIdAPI">[in_Config("DocumentAttachment_API_GetContentIdAPI").ToString]</InArgument>
+                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_ContentDocumentLinkAPI">[in_Config("DocumentAttachment_API_ContentDocumentLink").ToString]</InArgument>
+                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_Visibility">AllUsers</InArgument>
                                                                   <OutArgument x:TypeArguments="x:Boolean" x:Key="out_IsReportAttachedtoSF" />
-                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_API_JWT_Token">
-                                                                    <Literal x:TypeArguments="x:String">https://test.salesforce.com/services/oauth2/token?grant_type=password&amp;client_id=3MVG9KAEr0ABaqiohxfQdw9yBxc3Ws5GEI54gulxjk_k72Xj5VFJSrLKURELTvlAX5oiWvISBvWK9rBnaZrVi&amp;client_secret=C7E295C4B370F5FD7058EE4C448B5165BB7F42EF8C51DF7E72EFBD57869A51CC&amp;username=da_sf_user@novozymes.com.uat&amp;password=Robotic_Sanbox@2025EXneHCL96FakvIgCdySfRiGX</Literal>
-                                                                  </InArgument>
+                                                                  <InArgument x:TypeArguments="x:String" x:Key="in_API_JWT_Token">https://test.salesforce.com/services/oauth2/token?grant_type=password&amp;client_id=3MVG9KAEr0ABaqiohxfQdw9yBxc3Ws5GEI54gulxjk_k72Xj5VFJSrLKURELTvlAX5oiWvISBvWK9rBnaZrVi&amp;client_secret=C7E295C4B370F5FD7058EE4C448B5165BB7F42EF8C51DF7E72EFBD57869A51CC&amp;username=da_sf_user@novozymes.com.uat&amp;password=Robotic_Sanbox@2025EXneHCL96FakvIgCdySfRiGX</InArgument>
                                                                 </ui:InvokeWorkflowFile.Arguments>
                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1292,33 +1226,33 @@
                                                   </ui:ForEach.Body>
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                 </ui:ForEach>
-                                                <If Condition="[strAIMailType.ToLower.Trim=&quot;order management &quot; And strAiMailSubType.Trim.tolower=&quot;new order creation&quot;]" DisplayName="If type and subtype is new order" sap:VirtualizedContainerService.HintSize="845,290" sap2010:WorkflowViewState.IdRef="If_15">
+                                                <If Condition="[strAIMailType.ToLower.Trim=&quot;order management&quot; And strAiMailSubType.Trim.tolower=&quot;new order creation&quot;]" DisplayName="If type and subtype is new order" sap:VirtualizedContainerService.HintSize="1199,1103" sap2010:WorkflowViewState.IdRef="If_15">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                     </scg:Dictionary>
                                                   </sap:WorkflowViewStateService.ViewState>
                                                   <If.Then>
-                                                    <Sequence sap:VirtualizedContainerService.HintSize="400,81" sap2010:WorkflowViewState.IdRef="Sequence_78">
+                                                    <Sequence sap:VirtualizedContainerService.HintSize="754,915" sap2010:WorkflowViewState.IdRef="Sequence_78">
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
-                                                      <Sequence DisplayName="saving the PDF/word" sap:VirtualizedContainerService.HintSize="692,806" sap2010:WorkflowViewState.IdRef="Sequence_77">
+                                                      <Sequence DisplayName="saving the PDF/word" sap:VirtualizedContainerService.HintSize="692,804" sap2010:WorkflowViewState.IdRef="Sequence_77">
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <If Condition="[system.io.Directory.GetFiles(strPDFAttachmentFolder).where(Function(x) x.ToString.ToLower.EndsWith(&quot;pdf&quot;) or x.ToString.ToLower.EndsWith(&quot;doc&quot;) or x.ToString.ToLower.EndsWith(&quot;docx&quot;) or x.ToString.ToLower.EndsWith(&quot;docs&quot;)).Count&gt;1]" sap:VirtualizedContainerService.HintSize="630,695" sap2010:WorkflowViewState.IdRef="If_14">
+                                                        <If Condition="[system.io.Directory.GetFiles(strPDFAttachmentFolder).where(Function(x) x.ToString.ToLower.EndsWith(&quot;pdf&quot;) or x.ToString.ToLower.EndsWith(&quot;doc&quot;) or x.ToString.ToLower.EndsWith(&quot;docx&quot;) or x.ToString.ToLower.EndsWith(&quot;docs&quot;)).Count&gt;1]" sap:VirtualizedContainerService.HintSize="630,693" sap2010:WorkflowViewState.IdRef="If_14">
                                                           <sap:WorkflowViewStateService.ViewState>
                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1326,13 +1260,13 @@
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
                                                           <If.Then>
-                                                            <Sequence sap:VirtualizedContainerService.HintSize="594,506" sap2010:WorkflowViewState.IdRef="Sequence_75">
+                                                            <Sequence sap:VirtualizedContainerService.HintSize="594,505" sap2010:WorkflowViewState.IdRef="Sequence_75">
                                                               <sap:WorkflowViewStateService.ViewState>
                                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                 </scg:Dictionary>
                                                               </sap:WorkflowViewStateService.ViewState>
-                                                              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="532,395" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[system.io.Directory.GetFiles(strPDFAttachmentFolder).where(Function(x) x.ToString.ToLower.EndsWith(&quot;pdf&quot;) or x.ToString.ToLower.EndsWith(&quot;doc&quot;) or x.ToString.ToLower.EndsWith(&quot;docx&quot;) or x.ToString.ToLower.EndsWith(&quot;docs&quot;))]">
+                                                              <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="532,394" sap2010:WorkflowViewState.IdRef="ForEach`1_6" Values="[system.io.Directory.GetFiles(strPDFAttachmentFolder).where(Function(x) x.ToString.ToLower.EndsWith(&quot;pdf&quot;) or x.ToString.ToLower.EndsWith(&quot;doc&quot;) or x.ToString.ToLower.EndsWith(&quot;docx&quot;) or x.ToString.ToLower.EndsWith(&quot;docs&quot;))]">
                                                                 <ui:ForEach.Body>
                                                                   <ActivityAction x:TypeArguments="x:String">
                                                                     <ActivityAction.Argument>
@@ -1388,7 +1322,7 @@
                                                     </Sequence>
                                                   </If.Else>
                                                 </If>
-                                                <ui:DeleteFolderX DisplayName="Delete Folder" sap:VirtualizedContainerService.HintSize="845,80" sap2010:WorkflowViewState.IdRef="DeleteFolderX_3" Path="[strPDFAttachmentFolder]" Recursive="True">
+                                                <ui:DeleteFolderX DisplayName="Delete Folder" sap:VirtualizedContainerService.HintSize="1199,80" sap2010:WorkflowViewState.IdRef="DeleteFolderX_3" Path="[strPDFAttachmentFolder]" Recursive="True">
                                                   <sap:WorkflowViewStateService.ViewState>
                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1488,12 +1422,12 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[strSwitchType]" sap:VirtualizedContainerService.HintSize="497,246" sap2010:WorkflowViewState.IdRef="Switch`1_3">
+                            <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[strSwitchType]" sap:VirtualizedContainerService.HintSize="784,820" sap2010:WorkflowViewState.IdRef="Switch`1_3">
                               <Switch.Default>
-                                <Flowchart sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Flowchart_6">
+                                <Flowchart sap:VirtualizedContainerService.HintSize="746,637" sap2010:WorkflowViewState.IdRef="Flowchart_6">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
                                       <av:Size x:Key="ShapeSize">60,75</av:Size>
@@ -1593,7 +1527,7 @@
                                 </sap:WorkflowViewStateService.ViewState>
                               </Assign>
                             </Switch>
-                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="497,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="784,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                               <ui:CommentOut.Body>
                                 <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,163" sap2010:WorkflowViewState.IdRef="Sequence_11">
                                   <sap:WorkflowViewStateService.ViewState>
@@ -1717,14 +1651,30 @@
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SalsesForce_Getting_AccountId_OwnerID workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="Application_Layer\Salesforce_Api\SalsesForce_Getting_AccountId_OwnerID.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_Api_Url">https://novonesis--uat.sandbox.my.salesforce.com/services/data/v57.0/query/?q=select+id+,+name+,+accountid+,+account.name+,+account.CSR__c+,+account.OTCDedicated_CSR__c+from+contact+where+email+='{0}.invalid'</InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_Email">[in_TransactionItem.SpecificContent("FromEmailAddress").ToString]</InArgument>
-                    <OutArgument x:TypeArguments="x:String" x:Key="out_AccountID">[strAccountID]</OutArgument>
-                    <OutArgument x:TypeArguments="x:String" x:Key="out_ContactID">[strContactID]</OutArgument>
-                    <OutArgument x:TypeArguments="x:String" x:Key="out_OwnerID">[strOwnerID_Temp]</OutArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_Auth_Api">https://test.salesforce.com/services/oauth2/token?grant_type=password&amp;client_id=3MVG9KAEr0ABaqiohxfQdw9yBxc3Ws5GEI54gulxjk_k72Xj5VFJSrLKURELTvlAX5oiWvISBvWK9rBnaZrVi&amp;client_secret=C7E295C4B370F5FD7058EE4C448B5165BB7F42EF8C51DF7E72EFBD57869A51CC&amp;username=da_sf_user@novozymes.com.uat&amp;password=Robotic_Sanbox@2025EXneHCL96FakvIgCdySfRiGX</InArgument>
-                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AccountNotFound">[blnCustomerAccountNotFound]</OutArgument>
-                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_MultipleAccountsFound">[blnMultipleCustomerAccountsFound]</OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Api_Url">
+                      <Literal x:TypeArguments="x:String">https://novonesis--uat.sandbox.my.salesforce.com/services/data/v57.0/query/?q=select+id+,+name+,+accountid+,+account.name+,+account.CSR__c+,+account.OTCDedicated_CSR__c+from+contact+where+email+='{0}.invalid'</Literal>
+                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Email">
+                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_TransactionItem.SpecificContent(&quot;FromEmailAddress&quot;).ToString" />
+                    </InArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_AccountID">
+                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strAccountID" />
+                    </OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_ContactID">
+                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strContactID" />
+                    </OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_OwnerID">
+                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strOwnerID_Temp" />
+                    </OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Auth_Api">
+                      <Literal x:TypeArguments="x:String">https://test.salesforce.com/services/oauth2/token?grant_type=password&amp;client_id=3MVG9KAEr0ABaqiohxfQdw9yBxc3Ws5GEI54gulxjk_k72Xj5VFJSrLKURELTvlAX5oiWvISBvWK9rBnaZrVi&amp;client_secret=C7E295C4B370F5FD7058EE4C448B5165BB7F42EF8C51DF7E72EFBD57869A51CC&amp;username=da_sf_user@novozymes.com.uat&amp;password=Robotic_Sanbox@2025EXneHCL96FakvIgCdySfRiGX</Literal>
+                    </InArgument>
+                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_AccountNotFound">
+                      <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="blnCustomerAccountNotFound" />
+                    </OutArgument>
+                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_MultipleAccountsFound">
+                      <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="blnMultipleCustomerAccountsFound" />
+                    </OutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                 </ui:InvokeWorkflowFile>
                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SalesForce_GettingMailBoxDetails workflow" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="Application_Layer\Salesforce_Api\SalesForce_GettingMailBoxDetails.xaml">
@@ -2282,7 +2232,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Updating Summary" sap:VirtualizedContainerService.HintSize="591,389" sap2010:WorkflowViewState.IdRef="Sequence_15">
+              <Sequence DisplayName="Updating Summary" sap:VirtualizedContainerService.HintSize="400,389" sap2010:WorkflowViewState.IdRef="Sequence_15">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -2432,7 +2382,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:CommentOut>
               </Sequence>
-              <Rethrow sap:VirtualizedContainerService.HintSize="591,25" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+              <Rethrow sap:VirtualizedContainerService.HintSize="400,25" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
             </Sequence>
           </ActivityAction>
         </Catch>

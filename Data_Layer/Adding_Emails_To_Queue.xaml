@@ -118,7 +118,6 @@
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Web</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="Adding_Emails_Queue" sap:VirtualizedContainerService.HintSize="1988,2907" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -210,7 +209,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:CommentOut>
-                    <umam:GetMail EmailId="{x:Null}" Account="myorder@novozymes.com" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="1732,25" sap2010:WorkflowViewState.IdRef="GetMail_2" MailFolder="Inbox" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Query="ReceivedDateTime ge 2024-08-05T00:00:00Z And ReceivedDateTime le 2024-08-05T23:59:59Z" Results="[lstEmails]" Top="[int32.MaxValue]" />
+                    <umam:GetMail EmailId="{x:Null}" Account="myorder@novozymes.com" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="1732,25" sap2010:WorkflowViewState.IdRef="GetMail_2" MailFolder="Inbox" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Query="ReceivedDateTime ge 2024-08-06T00:00:00Z And ReceivedDateTime le 2024-08-06T23:59:59Z" Results="[lstEmails]" Top="[int32.MaxValue]" />
                     <ui:ForEach x:TypeArguments="umm:Office365Message" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1732,1951" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[lstEmails]">
                       <ui:ForEach.Body>
                         <ActivityAction x:TypeArguments="umm:Office365Message">
