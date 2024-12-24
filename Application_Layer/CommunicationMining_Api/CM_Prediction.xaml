@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1167,1768</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1198,1702</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CM_Prediction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -120,7 +120,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CM_Prediction" sap:VirtualizedContainerService.HintSize="1177,1703" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CM_Prediction" sap:VirtualizedContainerService.HintSize="969,1517" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="umm:Office365Message[]" Name="emails" />
       <Variable x:TypeArguments="x:String" Name="strRawBody" />
@@ -133,7 +133,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="CM_Prediction" sap:VirtualizedContainerService.HintSize="1115,1592" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="CM_Prediction" sap:VirtualizedContainerService.HintSize="907,1406" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="strApplicationSecret" />
         <Variable x:TypeArguments="x:String" Name="strApplicationID" />
@@ -143,13 +143,14 @@
         <Variable x:TypeArguments="x:String" Name="strResonseContent" />
         <Variable x:TypeArguments="x:Int32" Name="iCount" />
         <Variable x:TypeArguments="x:String" Name="strEmailBody" />
+        <Variable x:TypeArguments="x:String" Name="strUniformRawBody" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:ReadTextFile File="{x:Null}" Content="[strHttPBody]" DisplayName="Read Text File" FileName="Application_Layer\CommunicationMining_Api\ResponseBody.txt" sap:VirtualizedContainerService.HintSize="1053,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1">
+      <ui:ReadTextFile File="{x:Null}" Content="[strHttPBody]" DisplayName="Read Text File" FileName="Application_Layer\CommunicationMining_Api\ResponseBody.txt" sap:VirtualizedContainerService.HintSize="845,80" sap2010:WorkflowViewState.IdRef="ReadTextFile_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -157,7 +158,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:ReadTextFile>
-      <Assign sap:VirtualizedContainerService.HintSize="1053,81" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign sap:VirtualizedContainerService.HintSize="845,61" sap2010:WorkflowViewState.IdRef="Assign_3">
         <Assign.To>
           <OutArgument x:TypeArguments="snm:MailMessage">[MailMessage]</OutArgument>
         </Assign.To>
@@ -171,7 +172,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="1053,81" sap2010:WorkflowViewState.IdRef="Assign_8">
+      <Assign sap:VirtualizedContainerService.HintSize="845,61" sap2010:WorkflowViewState.IdRef="Assign_8">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[strEmailBody]</OutArgument>
         </Assign.To>
@@ -185,15 +186,15 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1053,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+      <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="845,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
         <ui:CommentOut.Body>
-          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,192" sap2010:WorkflowViewState.IdRef="Sequence_10">
+          <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,172" sap2010:WorkflowViewState.IdRef="Sequence_10">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[strRawBody]</OutArgument>
               </Assign.To>
@@ -210,7 +211,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:CommentOut>
-      <Assign sap:VirtualizedContainerService.HintSize="1053,81" sap2010:WorkflowViewState.IdRef="Assign_9">
+      <Assign sap:VirtualizedContainerService.HintSize="845,61" sap2010:WorkflowViewState.IdRef="Assign_9">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[strRawBody]</OutArgument>
         </Assign.To>
@@ -224,12 +225,20 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <Assign sap:VirtualizedContainerService.HintSize="1053,81" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign sap:VirtualizedContainerService.HintSize="845,61" sap2010:WorkflowViewState.IdRef="Assign_16">
+        <Assign.To>
+          <OutArgument x:TypeArguments="x:String">[strUniformRawBody]</OutArgument>
+        </Assign.To>
+        <Assign.Value>
+          <InArgument x:TypeArguments="x:String">[system.Text.RegularExpressions.Regex.Replace(strRawBody, "\""", "")]</InArgument>
+        </Assign.Value>
+      </Assign>
+      <Assign sap:VirtualizedContainerService.HintSize="845,61" sap2010:WorkflowViewState.IdRef="Assign_2">
         <Assign.To>
           <OutArgument x:TypeArguments="x:String">[strHttPBody]</OutArgument>
         </Assign.To>
         <Assign.Value>
-          <InArgument x:TypeArguments="x:String">[strHttPBody.Replace("{0}", strRawBody).Replace("{1}", in_OutlookEmail.InternetMessageId.ToString).Replace("{3}", in_OutlookEmail.Subject.ToString).Replace("{4}", in_OutlookEmail.From.Address).Replace("{5}", if(string.IsNullOrEmpty(in_OutlookEmail.To.ToString),"", System.Text.RegularExpressions.Regex.Matches(in_OutlookEmail.To.ToString,"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}")(0).ToString)).Replace("{2}",CDate(in_OutlookEmail.ReceivedDateTime).ToString("ddd, dd MMM yyyy hh:mm:ss zzzz"))]</InArgument>
+          <InArgument x:TypeArguments="x:String">[strHttPBody.Replace("{0}",strUniformRawBody).Replace("{1}", in_OutlookEmail.InternetMessageId.ToString).Replace("{3}",Regex.Replace(in_OutlookEmail.Subject.ToString, "\s+", " ") ).Replace("{4}", in_OutlookEmail.From.Address).Replace("{5}", if(string.IsNullOrEmpty(in_OutlookEmail.To.ToString),"", System.Text.RegularExpressions.Regex.Matches(in_OutlookEmail.To.ToString,"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}")(0).ToString)).Replace("{2}",CDate(in_OutlookEmail.ReceivedDateTime).ToString("ddd, dd MMM yyyy hh:mm:ss zzzz"))]</InArgument>
         </Assign.Value>
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -238,7 +247,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </Assign>
-      <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[strHttPBody]" BodyFormat="application/json" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[in_PredictionAPi]" sap:VirtualizedContainerService.HintSize="1053,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" OAuth2Token="[in_CM_Token]" Result="[strResonseContent]" StatusCode="[iResponseStatus]" TimeoutMS="60000">
+      <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[strHttPBody]" BodyFormat="application/json" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[in_PredictionAPi]" sap:VirtualizedContainerService.HintSize="845,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" OAuth2Token="[in_CM_Token]" Result="[strResonseContent]" StatusCode="[iResponseStatus]" TimeoutMS="60000">
         <ui:HttpClient.Attachments>
           <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
         </ui:HttpClient.Attachments>
@@ -261,7 +270,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:HttpClient>
-      <If Condition="[iResponseStatus=200 or iResponseStatus=202 or iResponseStatus=201]" sap:VirtualizedContainerService.HintSize="1053,675" sap2010:WorkflowViewState.IdRef="If_1">
+      <If Condition="[iResponseStatus=200 or iResponseStatus=202 or iResponseStatus=201]" sap:VirtualizedContainerService.HintSize="845,468" sap2010:WorkflowViewState.IdRef="If_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -269,13 +278,14 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="558,516" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <Sequence sap:VirtualizedContainerService.HintSize="462,496" sap2010:WorkflowViewState.IdRef="Sequence_18">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="496,52" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jsonObject]" JsonString="[strResonseContent]">
+            <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="400,52" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jsonObject]" JsonString="[strResonseContent]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -283,7 +293,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:DeserializeJson>
-            <Sequence DisplayName="Predictions" sap:VirtualizedContainerService.HintSize="496,81" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <Sequence DisplayName="Predictions" sap:VirtualizedContainerService.HintSize="1569,1567" sap2010:WorkflowViewState.IdRef="Sequence_5">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Double" Name="dblMaxProbability" />
               </Sequence.Variables>
@@ -293,7 +303,7 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="1510,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+              <Assign sap:VirtualizedContainerService.HintSize="1507,61" sap2010:WorkflowViewState.IdRef="Assign_4">
                 <Assign.To>
                   <OutArgument x:TypeArguments="sd:DataTable">[dtPrediction]</OutArgument>
                 </Assign.To>
@@ -307,7 +317,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </Assign>
-              <If Condition="[not jsonObject.SelectToken(&quot;predictions&quot;)(0).Count=0]" sap:VirtualizedContainerService.HintSize="1510,52" sap2010:WorkflowViewState.IdRef="If_2">
+              <If Condition="[not jsonObject.SelectToken(&quot;predictions&quot;)(0).Count=0]" sap:VirtualizedContainerService.HintSize="1507,52" sap2010:WorkflowViewState.IdRef="If_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -422,7 +432,7 @@ jsonObject.SelectToken("predictions")(0)(iCount-1).SelectToken("name").ToString.
                   </Sequence>
                 </If.Else>
               </If>
-              <Assign sap:VirtualizedContainerService.HintSize="1510,52" sap2010:WorkflowViewState.IdRef="Assign_10">
+              <Assign sap:VirtualizedContainerService.HintSize="1507,61" sap2010:WorkflowViewState.IdRef="Assign_10">
                 <Assign.To>
                   <OutArgument x:TypeArguments="sd:DataTable">[dtPrediction]</OutArgument>
                 </Assign.To>
@@ -436,7 +446,7 @@ jsonObject.SelectToken("predictions")(0)(iCount-1).SelectToken("name").ToString.
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </Assign>
-              <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Type" DataTable="[dtPrediction]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="1510,52" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1">
+              <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="Type" DataTable="[dtPrediction]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="1507,52" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -444,7 +454,7 @@ jsonObject.SelectToken("predictions")(0)(iCount-1).SelectToken("name").ToString.
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:AddDataColumn>
-              <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="SubType" DataTable="[dtPrediction]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="1510,52" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2">
+              <ui:AddDataColumn x:TypeArguments="x:Object" AllowDBNull="{x:Null}" AutoIncrement="{x:Null}" Column="{x:Null}" DefaultValue="{x:Null}" MaxLength="{x:Null}" Unique="{x:Null}" ColumnName="SubType" DataTable="[dtPrediction]" DisplayName="Add Data Column" sap:VirtualizedContainerService.HintSize="1507,52" sap2010:WorkflowViewState.IdRef="AddDataColumn`1_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -452,7 +462,7 @@ jsonObject.SelectToken("predictions")(0)(iCount-1).SelectToken("name").ToString.
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:AddDataColumn>
-              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1510,52" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1507,52" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -504,7 +514,7 @@ jsonObject.SelectToken("predictions")(0)(iCount-1).SelectToken("name").ToString.
                   </Catch>
                 </TryCatch.Catches>
               </TryCatch>
-              <If Condition="[dtPrediction is Nothing or dtPrediction.RowCount=0]" sap:VirtualizedContainerService.HintSize="1510,961" sap2010:WorkflowViewState.IdRef="If_5">
+              <If Condition="[dtPrediction is Nothing or dtPrediction.RowCount=0]" sap:VirtualizedContainerService.HintSize="1507,886" sap2010:WorkflowViewState.IdRef="If_5">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -563,7 +573,7 @@ jsonObject.SelectToken("predictions")(0)(iCount-1).SelectToken("name").ToString.
                   </Sequence>
                 </If.Then>
                 <If.Else>
-                  <If Condition="[dtPrediction.Rows.Count=1]" sap:VirtualizedContainerService.HintSize="972,801" sap2010:WorkflowViewState.IdRef="If_3">
+                  <If Condition="[dtPrediction.Rows.Count=1]" sap:VirtualizedContainerService.HintSize="969,727" sap2010:WorkflowViewState.IdRef="If_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -609,7 +619,7 @@ jsonObject.SelectToken("predictions")(0)(iCount-1).SelectToken("name").ToString.
                       </ui:MultipleAssign>
                     </If.Then>
                     <If.Else>
-                      <Sequence sap:VirtualizedContainerService.HintSize="496,641" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                      <Sequence sap:VirtualizedContainerService.HintSize="493,568" sap2010:WorkflowViewState.IdRef="Sequence_15">
                         <Sequence.Variables>
                           <Variable x:TypeArguments="sd:DataTable" Name="dtMaxPrediction" />
                         </Sequence.Variables>
@@ -618,16 +628,58 @@ jsonObject.SelectToken("predictions")(0)(iCount-1).SelectToken("name").ToString.
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Assign sap:VirtualizedContainerService.HintSize="434,83" sap2010:WorkflowViewState.IdRef="Assign_13">
-                          <Assign.To>
-                            <OutArgument x:TypeArguments="sd:DataTable">[dtPrediction]</OutArgument>
-                          </Assign.To>
-                          <Assign.Value>
-                            <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[If(dtPrediction.AsEnumerable.Where(Function(x) Not String.IsNullOrEmpty(x("SubType").ToString)) Is Nothing,dtPrediction,
+                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="431,52" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                          <ui:CommentOut.Body>
+                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,163" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <TryCatch.Try>
+                                  <Assign sap:VirtualizedContainerService.HintSize="262,65" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="sd:DataTable">[dtPrediction]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="sd:DataTable" xml:space="preserve">[If(dtPrediction.AsEnumerable.Where(Function(x) Not String.IsNullOrEmpty(x("SubType").ToString)) Is Nothing,dtPrediction,
 dtPrediction.AsEnumerable.Where(Function(x) Not String.IsNullOrEmpty(x("SubType").ToString)).CopyToDataTable)]</InArgument>
-                          </Assign.Value>
-                        </Assign>
-                        <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                    </Assign.Value>
+                                  </Assign>
+                                </TryCatch.Try>
+                                <TryCatch.Catches>
+                                  <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <ActivityAction x:TypeArguments="s:Exception">
+                                      <ActivityAction.Argument>
+                                        <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                      </ActivityAction.Argument>
+                                    </ActivityAction>
+                                  </Catch>
+                                </TryCatch.Catches>
+                              </TryCatch>
+                            </Sequence>
+                          </ui:CommentOut.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:CommentOut>
+                        <Assign sap:VirtualizedContainerService.HintSize="431,61" sap2010:WorkflowViewState.IdRef="Assign_11">
                           <Assign.To>
                             <OutArgument x:TypeArguments="x:Double">[dblMaxProbability]</OutArgument>
                           </Assign.To>
@@ -635,7 +687,7 @@ dtPrediction.AsEnumerable.Where(Function(x) Not String.IsNullOrEmpty(x("SubType"
                             <InArgument x:TypeArguments="x:Double">[dtPrediction.AsEnumerable().Max(Function(row) Convert.ToDouble(row("probability")))]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_12">
+                        <Assign sap:VirtualizedContainerService.HintSize="431,61" sap2010:WorkflowViewState.IdRef="Assign_12">
                           <Assign.To>
                             <OutArgument x:TypeArguments="sd:DataTable">[dtMaxPrediction]</OutArgument>
                           </Assign.To>
@@ -643,7 +695,7 @@ dtPrediction.AsEnumerable.Where(Function(x) Not String.IsNullOrEmpty(x("SubType"
                             <InArgument x:TypeArguments="sd:DataTable">[dtPrediction.AsEnumerable().Where(Function(row) Convert.ToDouble(row("probability")) = dblMaxProbability).CopyToDataTable()]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
+                        <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_4">
                           <ui:MultipleAssign.AssignOperations>
                             <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                               <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
@@ -685,13 +737,13 @@ dtPrediction.AsEnumerable.Where(Function(x) Not String.IsNullOrEmpty(x("SubType"
                 </If.Else>
               </If>
             </Sequence>
-            <Sequence DisplayName="label_properties" sap:VirtualizedContainerService.HintSize="496,192" sap2010:WorkflowViewState.IdRef="Sequence_19">
+            <Sequence DisplayName="label_properties" sap:VirtualizedContainerService.HintSize="400,172" sap2010:WorkflowViewState.IdRef="Sequence_19">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_15">
+              <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_15">
                 <Assign.To>
                   <OutArgument x:TypeArguments="sd:DataTable">[out_LabelProperties]</OutArgument>
                 </Assign.To>
@@ -703,13 +755,15 @@ dtPrediction.AsEnumerable.Where(Function(x) Not String.IsNullOrEmpty(x("SubType"
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence sap:VirtualizedContainerService.HintSize="450,136" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence sap:VirtualizedContainerService.HintSize="400,309" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Throw Exception="[new System.Exception(&quot;Failed to predict for the subject : &quot;+in_OutlookEmail.Subject+vbNewLine+strResonseContent)]" sap:VirtualizedContainerService.HintSize="388,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
+            <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="CM_html.txt" sap:VirtualizedContainerService.HintSize="338,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strHttPBody]" />
+            <Throw Exception="[new System.Exception(&quot;Failed to predict for the subject : &quot;+in_OutlookEmail.Subject+vbNewLine+strResonseContent)]" sap:VirtualizedContainerService.HintSize="338,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
           </Sequence>
         </If.Else>
       </If>
