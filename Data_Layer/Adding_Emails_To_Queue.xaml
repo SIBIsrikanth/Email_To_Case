@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1978,2972</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1978,3123</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Adding_Emails_Queue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -121,7 +121,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Adding_Emails_Queue" sap:VirtualizedContainerService.HintSize="1988,2907" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Adding_Emails_Queue" sap:VirtualizedContainerService.HintSize="1988,3018" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="umm:Office365Message[]" Name="lstEmails" />
       <Variable x:TypeArguments="x:String" Name="strLatestMailBody" />
@@ -168,40 +168,39 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1926,2542" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[strMailFolderName.Split(&quot;,&quot;.ToCharArray)]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1926,2653" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[strMailFolderName.Split(&quot;,&quot;.ToCharArray)]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="mailAccountFolder" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1890,2417" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1890,2528" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_Config(&quot;ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;ApplicationSecret&quot;).ToString]" AuthenticationType="InteractiveToken" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="1828,2306" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="Custom" Services="Files, Mail, Shared" Tenant="[in_Config(&quot;TenantID&quot;).ToString]">
+            <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_Config(&quot;ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;ApplicationSecret&quot;).ToString]" AuthenticationType="InteractiveToken" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="1828,2417" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="Custom" Services="Files, Mail, Shared" Tenant="[in_Config(&quot;TenantID&quot;).ToString]">
               <uma:Office365ApplicationScope.Body>
                 <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                   </ActivityAction.Argument>
-                  <Sequence sap:VirtualizedContainerService.HintSize="1794,2219" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <Sequence sap:VirtualizedContainerService.HintSize="1794,2330" sap2010:WorkflowViewState.IdRef="Sequence_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <umam:GetMail Account="{x:Null}" EmailId="{x:Null}" Query="{x:Null}" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="1732,25" sap2010:WorkflowViewState.IdRef="GetMail_3" MailFolder="[mailAccountFolder]" MarkAsRead="False" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Results="[lstEmails]" Top="30" />
-                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1732,52" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1732,52" sap2010:WorkflowViewState.IdRef="CommentOut_9">
                       <ui:CommentOut.Body>
-                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,136" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,136" sap2010:WorkflowViewState.IdRef="Sequence_41">
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <umam:GetMail EmailId="{x:Null}" Account="myorder@novozymes.com" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="338,25" sap2010:WorkflowViewState.IdRef="GetMail_2" MailFolder="Inbox" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Query="ReceivedDateTime ge 2024-08-06T00:00:00Z And ReceivedDateTime le 2024-08-06T23:59:59Z" Results="[lstEmails]" Top="[int32.MaxValue]" />
+                          <umam:GetMail Account="{x:Null}" EmailId="{x:Null}" Query="{x:Null}" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="338,25" sap2010:WorkflowViewState.IdRef="GetMail_3" MailFolder="[mailAccountFolder]" MarkAsRead="False" OnlyUnreadMessages="True" OrderByDate="NewestFirst" Results="[lstEmails]" Top="30" />
                         </Sequence>
                       </ui:CommentOut.Body>
                       <sap:WorkflowViewStateService.ViewState>
@@ -211,20 +210,21 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:CommentOut>
-                    <ui:ForEach x:TypeArguments="umm:Office365Message" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1732,1951" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[lstEmails]">
+                    <umam:GetMail EmailId="{x:Null}" Account="myorder@novozymes.com" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="1732,25" sap2010:WorkflowViewState.IdRef="GetMail_4" MailFolder="Inbox" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Query="ReceivedDateTime ge 2024-08-08T00:00:00Z And ReceivedDateTime le 2024-08-08T23:59:59Z" Results="[lstEmails]" Top="[int32.MaxValue]" />
+                    <ui:ForEach x:TypeArguments="umm:Office365Message" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1781,2062" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[lstEmails]">
                       <ui:ForEach.Body>
                         <ActivityAction x:TypeArguments="umm:Office365Message">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="umm:Office365Message" Name="EachEmail" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1696,1826" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1745,1937" sap2010:WorkflowViewState.IdRef="Sequence_4">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1634,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1683,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                               <ui:MultipleAssign.AssignOperations>
                                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -255,12 +255,12 @@
                               </ui:MultipleAssign.AssignOperations>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                             </ui:MultipleAssign>
-                            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1634,1623" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                            <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="1683,1623" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -268,7 +268,7 @@
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
                               <TryCatch.Try>
-                                <Flowchart DisplayName="Flow chart" sap:VirtualizedContainerService.HintSize="1596,1395" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+                                <Flowchart DisplayName="Flow chart" sap:VirtualizedContainerService.HintSize="1645,1395" sap2010:WorkflowViewState.IdRef="Flowchart_1">
                                   <Flowchart.Variables>
                                     <Variable x:TypeArguments="x:Boolean" Name="blnTobeloned" />
                                   </Flowchart.Variables>
@@ -279,7 +279,7 @@
                                       <av:Point x:Key="ShapeLocation">470,2.5</av:Point>
                                       <av:Size x:Key="ShapeSize">60,75</av:Size>
                                       <av:PointCollection x:Key="ConnectorLocation">500,77.5 500,107.5 501.641666666667,107.5 501.641666666667,127.5</av:PointCollection>
-                                      <x:Double x:Key="Width">1562</x:Double>
+                                      <x:Double x:Key="Width">1611</x:Double>
                                       <x:Double x:Key="Height">1357.5</x:Double>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
@@ -430,8 +430,12 @@
                                             </sap:WorkflowViewStateService.ViewState>
                                             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetLatestEmail workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Data_Layer\Email_Utils\GetLatestEmail.xaml">
                                               <ui:InvokeWorkflowFile.Arguments>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_emailBody">[System.Web.HttpUtility.HtmlDecode(EachEmail.Body.ToString)]</InArgument>
-                                                <OutArgument x:TypeArguments="x:String" x:Key="out_latestEmail">[strLatestMailBody]</OutArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_emailBody">
+                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="System.Web.HttpUtility.HtmlDecode(EachEmail.Body.ToString)" />
+                                                </InArgument>
+                                                <OutArgument x:TypeArguments="x:String" x:Key="out_latestEmail">
+                                                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strLatestMailBody" />
+                                                </OutArgument>
                                               </ui:InvokeWorkflowFile.Arguments>
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -513,7 +517,7 @@
                                                                     <av:PointCollection x:Key="ConnectorLocation">1210,1182.5 1210,1232.5</av:PointCollection>
                                                                   </scg:Dictionary>
                                                                 </sap:WorkflowViewStateService.ViewState>
-                                                                <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="AddQueueItem_6" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="myorder@Novozymes.com">
+                                                                <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="AddQueueItem_6" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="EmptyBody,No Attachment">
                                                                   <ui:AddQueueItem.ItemInformation>
                                                                     <InArgument x:TypeArguments="x:String" x:Key="ReceivedDate">[EachEmail.ReceivedDateTime.ToString]</InArgument>
                                                                     <InArgument x:TypeArguments="x:String" x:Key="FromEmailAddress">[EachEmail.From.Address]</InArgument>
@@ -559,7 +563,7 @@
                                                             <av:PointCollection x:Key="ConnectorLocation">630,1250 660,1250 660,1248.5 1100,1248.5</av:PointCollection>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <Sequence DisplayName="saving the PDF/word" sap:VirtualizedContainerService.HintSize="1005,2484" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                                        <Sequence DisplayName="saving the PDF/word" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_13">
                                                           <Sequence.Variables>
                                                             <Variable x:TypeArguments="x:Boolean" Name="blnPDFFolderAttachmentExits" />
                                                           </Sequence.Variables>
@@ -568,7 +572,7 @@
                                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
-                                                          <Assign sap:VirtualizedContainerService.HintSize="943,61" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                                          <Assign sap:VirtualizedContainerService.HintSize="540,61" sap2010:WorkflowViewState.IdRef="Assign_10">
                                                             <Assign.To>
                                                               <OutArgument x:TypeArguments="x:String">[strPDFAttachmentFolder]</OutArgument>
                                                             </Assign.To>
@@ -576,8 +580,14 @@
                                                               <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory+"\PDF_Folder"]</InArgument>
                                                             </Assign.Value>
                                                           </Assign>
-                                                          <ui:FolderExistsX DisplayName="Folder Exists" Exists="[blnPDFFolderAttachmentExits]" sap:VirtualizedContainerService.HintSize="943,133" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[strPDFAttachmentFolder]" />
-                                                          <If Condition="[blnPDFFolderAttachmentExits]" sap:VirtualizedContainerService.HintSize="943,379" sap2010:WorkflowViewState.IdRef="If_9">
+                                                          <ui:FolderExistsX DisplayName="Folder Exists" Exists="[blnPDFFolderAttachmentExits]" sap:VirtualizedContainerService.HintSize="540,133" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[strPDFAttachmentFolder]" />
+                                                          <If Condition="[blnPDFFolderAttachmentExits]" sap:VirtualizedContainerService.HintSize="540,52" sap2010:WorkflowViewState.IdRef="If_9">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
                                                             <If.Then>
                                                               <Sequence sap:VirtualizedContainerService.HintSize="496,191" sap2010:WorkflowViewState.IdRef="Sequence_39">
                                                                 <sap:WorkflowViewStateService.ViewState>
@@ -605,9 +615,9 @@
                                                               </Sequence>
                                                             </If.Else>
                                                           </If>
-                                                          <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="943,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[strPDFAttachmentFolder]" />
-                                                          <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" FolderPath="[strPDFAttachmentFolder]" sap:VirtualizedContainerService.HintSize="943,90" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[CType(EachEmail,System.Net.Mail.MailMessage)]" OverwriteExisting="False" />
-                                                          <If Condition="[system.io.Directory.GetFiles(strPDFAttachmentFolder).where(Function(x) path.GetExtension(x.ToString.ToLower).Equals(&quot;.pdf&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.docs&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.docx&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.doc&quot;)).Count&gt;0]" sap:VirtualizedContainerService.HintSize="943,942" sap2010:WorkflowViewState.IdRef="If_8">
+                                                          <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="540,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[strPDFAttachmentFolder]" />
+                                                          <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" FolderPath="[strPDFAttachmentFolder]" sap:VirtualizedContainerService.HintSize="540,90" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[CType(EachEmail,System.Net.Mail.MailMessage)]" OverwriteExisting="False" />
+                                                          <If Condition="[system.io.Directory.GetFiles(strPDFAttachmentFolder).where(Function(x) path.GetExtension(x.ToString.ToLower).Equals(&quot;.pdf&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.docs&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.docx&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.doc&quot;)).Count&gt;0]" sap:VirtualizedContainerService.HintSize="540,942" sap2010:WorkflowViewState.IdRef="If_8">
                                                             <sap:WorkflowViewStateService.ViewState>
                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -615,26 +625,26 @@
                                                               </scg:Dictionary>
                                                             </sap:WorkflowViewStateService.ViewState>
                                                             <If.Then>
-                                                              <Sequence sap:VirtualizedContainerService.HintSize="498,754" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                                                              <Sequence sap:VirtualizedContainerService.HintSize="504,754" sap2010:WorkflowViewState.IdRef="Sequence_35">
                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                   </scg:Dictionary>
                                                                 </sap:WorkflowViewStateService.ViewState>
-                                                                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="436,643" sap2010:WorkflowViewState.IdRef="ForEach`1_34" Values="[system.io.Directory.GetFiles(strPDFAttachmentFolder).where(Function(x) path.GetExtension(x.ToString.ToLower).Equals(&quot;.pdf&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.docs&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.docx&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.doc&quot;))]">
+                                                                <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="442,643" sap2010:WorkflowViewState.IdRef="ForEach`1_34" Values="[system.io.Directory.GetFiles(strPDFAttachmentFolder).where(Function(x) path.GetExtension(x.ToString.ToLower).Equals(&quot;.pdf&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.docs&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.docx&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.doc&quot;))]">
                                                                   <ui:ForEach.Body>
                                                                     <ActivityAction x:TypeArguments="x:String">
                                                                       <ActivityAction.Argument>
                                                                         <DelegateInArgument x:TypeArguments="x:String" Name="item" />
                                                                       </ActivityAction.Argument>
-                                                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,518" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                                                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="406,518" sap2010:WorkflowViewState.IdRef="Sequence_34">
                                                                         <sap:WorkflowViewStateService.ViewState>
                                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                           </scg:Dictionary>
                                                                         </sap:WorkflowViewStateService.ViewState>
-                                                                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+                                                                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="344,52" sap2010:WorkflowViewState.IdRef="CommentOut_8">
                                                                           <ui:CommentOut.Body>
                                                                             <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="496,163" sap2010:WorkflowViewState.IdRef="Sequence_38">
                                                                               <sap:WorkflowViewStateService.ViewState>
@@ -659,17 +669,13 @@
                                                                             </scg:Dictionary>
                                                                           </sap:WorkflowViewStateService.ViewState>
                                                                         </ui:CommentOut>
-                                                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Moving_file_To_ShareFolder workflow" sap:VirtualizedContainerService.HintSize="338,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Data_Layer\Moving_file_To_ShareFolder.xaml">
+                                                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Moving_file_To_ShareFolder workflow" sap:VirtualizedContainerService.HintSize="344,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_6" UnSafe="False" WorkflowFileName="Data_Layer\Moving_file_To_ShareFolder.xaml">
                                                                           <ui:InvokeWorkflowFile.Arguments>
-                                                                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                                                              <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="item" />
-                                                                            </InArgument>
+                                                                            <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[in_Config]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="in_FilePath">[item]</InArgument>
                                                                           </ui:InvokeWorkflowFile.Arguments>
                                                                         </ui:InvokeWorkflowFile>
-                                                                        <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_21">
+                                                                        <Assign sap:VirtualizedContainerService.HintSize="344,61" sap2010:WorkflowViewState.IdRef="Assign_21">
                                                                           <Assign.To>
                                                                             <OutArgument x:TypeArguments="x:Boolean">[blnAttachmentFound]</OutArgument>
                                                                           </Assign.To>
@@ -677,7 +683,7 @@
                                                                             <InArgument x:TypeArguments="x:Boolean">True</InArgument>
                                                                           </Assign.Value>
                                                                         </Assign>
-                                                                        <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_22">
+                                                                        <Assign sap:VirtualizedContainerService.HintSize="344,61" sap2010:WorkflowViewState.IdRef="Assign_22">
                                                                           <Assign.To>
                                                                             <OutArgument x:TypeArguments="x:String">[strAttachMentType]</OutArgument>
                                                                           </Assign.To>
@@ -707,7 +713,7 @@
                                                               </Sequence>
                                                             </If.Else>
                                                           </If>
-                                                          <Assign sap:VirtualizedContainerService.HintSize="943,61" sap2010:WorkflowViewState.IdRef="Assign_11">
+                                                          <Assign sap:VirtualizedContainerService.HintSize="540,61" sap2010:WorkflowViewState.IdRef="Assign_11">
                                                             <Assign.To>
                                                               <OutArgument x:TypeArguments="x:String">[strAIType]</OutArgument>
                                                             </Assign.To>
@@ -715,7 +721,7 @@
                                                               <InArgument x:TypeArguments="x:String" xml:space="preserve">Order Management </InArgument>
                                                             </Assign.Value>
                                                           </Assign>
-                                                          <Assign sap:VirtualizedContainerService.HintSize="943,61" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                                          <Assign sap:VirtualizedContainerService.HintSize="540,61" sap2010:WorkflowViewState.IdRef="Assign_12">
                                                             <Assign.To>
                                                               <OutArgument x:TypeArguments="x:String">[strAISubType]</OutArgument>
                                                             </Assign.To>
@@ -723,7 +729,7 @@
                                                               <InArgument x:TypeArguments="x:String">New Order Creation</InArgument>
                                                             </Assign.Value>
                                                           </Assign>
-                                                          <Assign sap:VirtualizedContainerService.HintSize="943,61" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                                          <Assign sap:VirtualizedContainerService.HintSize="540,61" sap2010:WorkflowViewState.IdRef="Assign_13">
                                                             <Assign.To>
                                                               <OutArgument x:TypeArguments="x:Boolean">[blnLatestMailBodyIsEmpty]</OutArgument>
                                                             </Assign.To>
@@ -731,8 +737,8 @@
                                                               <InArgument x:TypeArguments="x:Boolean">True</InArgument>
                                                             </Assign.Value>
                                                           </Assign>
-                                                          <ui:DeleteFolderX DisplayName="Delete Folder" sap:VirtualizedContainerService.HintSize="943,80" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[strPDFAttachmentFolder]" Recursive="True" />
-                                                          <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="630,25" sap2010:WorkflowViewState.IdRef="AddQueueItem_4" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="myorder@Novozymes.com">
+                                                          <ui:DeleteFolderX DisplayName="Delete Folder" sap:VirtualizedContainerService.HintSize="540,80" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[strPDFAttachmentFolder]" Recursive="True" />
+                                                          <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="540,25" sap2010:WorkflowViewState.IdRef="AddQueueItem_4" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="Empty body with attachment">
                                                             <ui:AddQueueItem.ItemInformation>
                                                               <InArgument x:TypeArguments="x:String" x:Key="ReceivedDate">[EachEmail.ReceivedDateTime.ToString]</InArgument>
                                                               <InArgument x:TypeArguments="x:String" x:Key="FromEmailAddress">[EachEmail.From.Address]</InArgument>
@@ -826,13 +832,17 @@
                                                         <av:PointCollection x:Key="ConnectorLocation">950,559.5 950,618.5</av:PointCollection>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
-                                                    <Sequence DisplayName="Data Extraction" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                                    <Sequence DisplayName="Data basic Extraction" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                                      <Sequence.Variables>
+                                                        <Variable x:TypeArguments="x:String" Name="strDataExtractionMailBody" />
+                                                        <Variable x:TypeArguments="x:String" Name="strDataExtractionMailBody_1" />
+                                                      </Sequence.Variables>
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                         </scg:Dictionary>
                                                       </sap:WorkflowViewStateService.ViewState>
-                                                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                                                      <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="434,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
                                                         <ui:MultipleAssign.AssignOperations>
                                                           <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                                             <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
@@ -863,7 +873,7 @@
                                                         </ui:MultipleAssign.AssignOperations>
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
@@ -882,7 +892,14 @@
                                                           <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory+"/Subject_Body+"+DateTime.Now.ToString("dd_MM_yyyy_hh_mm_ss")+".txt"]</InArgument>
                                                         </Assign.Value>
                                                       </Assign>
-                                                      <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="[strSubjectBodyFilePath]" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[EachEmail.Subject+vbNewLine+EachEmail.Body]" />
+                                                      <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="[strSubjectBodyFilePath]" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[EachEmail.Subject+vbNewLine+if(EachEmail.Body.Length&gt;6500,EachEmail.Body.Substring(0,6499),EachEmail.Body.ToString)]">
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                      </ui:WriteTextFile>
                                                       <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DataExtraction_BasicDetails workflow" sap:VirtualizedContainerService.HintSize="434,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Application_Layer\DataExtraction_Api\DataExtraction_BasicDetails.xaml">
                                                         <ui:InvokeWorkflowFile.Arguments>
                                                           <InArgument x:TypeArguments="x:String" x:Key="in_EmailBody">[EachEmail.Subject.ToString+Environment.NewLine+EachEmail.Body.ToString]</InArgument>
@@ -914,18 +931,35 @@
                                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
-                                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CM_Prediction workflow" sap:VirtualizedContainerService.HintSize="1290,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Application_Layer\CommunicationMining_Api\CM_Prediction.xaml">
+                                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CM_Prediction workflow" sap:VirtualizedContainerService.HintSize="779,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Application_Layer\CommunicationMining_Api\CM_Prediction.xaml">
                                                             <ui:InvokeWorkflowFile.Arguments>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="in_PredictionAPi">https://cloud.uipath.com/novonesis_rpa/Novonesis/reinfer_/api/v1/datasets/na_emails_classification/na_emails/labellers/2093/predict-raw-emails</InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="in_CM_Token">WSUSSJU7O645RQBSJFUUHC7ZRMPUTBKKKKSD2KOLX763MCXO</InArgument>
-                                                              <InArgument x:TypeArguments="umm:Office365Message" x:Key="in_OutlookEmail">[EachEmail]</InArgument>
-                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AIPrediction">[strAIPrediction]</OutArgument>
-                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AIType">[strAIType]</OutArgument>
-                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AISubType">[strAISubType]</OutArgument>
-                                                              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_LabelProperties">[dtLableProperties]</OutArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="in_PredictionAPi">
+                                                                <Literal x:TypeArguments="x:String">https://cloud.uipath.com/novonesis_rpa/Novonesis/reinfer_/api/v1/datasets/na_emails_classification/na_emails/labellers/2093/predict-raw-emails</Literal>
+                                                              </InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="in_CM_Token">
+                                                                <Literal x:TypeArguments="x:String">WSUSSJU7O645RQBSJFUUHC7ZRMPUTBKKKKSD2KOLX763MCXO</Literal>
+                                                              </InArgument>
+                                                              <InArgument x:TypeArguments="umm:Office365Message" x:Key="in_OutlookEmail">
+                                                                <mva:VisualBasicValue x:TypeArguments="umm:Office365Message" ExpressionText="EachEmail" />
+                                                              </InArgument>
+                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AIPrediction">
+                                                                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strAIPrediction" />
+                                                              </OutArgument>
+                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AIType">
+                                                                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strAIType" />
+                                                              </OutArgument>
+                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AISubType">
+                                                                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strAISubType" />
+                                                              </OutArgument>
+                                                              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_LabelProperties">
+                                                                <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtLableProperties" />
+                                                              </OutArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="strLatestEmailBody">
+                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strLatestMailBody" />
+                                                              </InArgument>
                                                             </ui:InvokeWorkflowFile.Arguments>
                                                           </ui:InvokeWorkflowFile>
-                                                          <If Condition="[If(String.IsNullOrEmpty(strAIType),False,if(strAIType.ToLower.Contains(&quot;urgent&quot;),True,False))]" DisplayName="If type is urgent?" sap:VirtualizedContainerService.HintSize="1290,490" sap2010:WorkflowViewState.IdRef="If_2">
+                                                          <If Condition="[If(String.IsNullOrEmpty(strAIType),False,if(strAIType.ToLower.Contains(&quot;urgent&quot;),True,False))]" DisplayName="If type is urgent?" sap:VirtualizedContainerService.HintSize="779,331" sap2010:WorkflowViewState.IdRef="If_2">
                                                             <sap:WorkflowViewStateService.ViewState>
                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -951,10 +985,10 @@
                                                               </Sequence>
                                                             </If.Then>
                                                             <If.Else>
-                                                              <If Condition="[CDbl(dtLableProperties(0)(&quot;value&quot;))&gt;-5 and CDbl(dtLableProperties(1)(&quot;value&quot;))&gt;-5]" DisplayName="If tone and quality of service is greater thann -5" sap:VirtualizedContainerService.HintSize="845,331" sap2010:WorkflowViewState.IdRef="If_1">
+                                                              <If Condition="[CDbl(dtLableProperties(0)(&quot;value&quot;))&gt;-5 and CDbl(dtLableProperties(1)(&quot;value&quot;))&gt;-5]" DisplayName="If tone and quality of service is greater thann -5" sap:VirtualizedContainerService.HintSize="334,52" sap2010:WorkflowViewState.IdRef="If_1">
                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                   </scg:Dictionary>
                                                                 </sap:WorkflowViewStateService.ViewState>
@@ -1015,7 +1049,7 @@
                                                                     <av:Point x:Key="ShapeLocation">1091,866.5</av:Point>
                                                                     <av:Size x:Key="ShapeSize">138,87</av:Size>
                                                                     <av:PointCollection x:Key="TrueConnector">1091,910 1041,910 1041,1004</av:PointCollection>
-                                                                    <av:PointCollection x:Key="FalseConnector">1229,910 1431,910 1431,984</av:PointCollection>
+                                                                    <av:PointCollection x:Key="FalseConnector">1229,910 1480,910 1480,979.5</av:PointCollection>
                                                                   </scg:Dictionary>
                                                                 </sap:WorkflowViewStateService.ViewState>
                                                                 <FlowDecision.True>
@@ -1049,7 +1083,7 @@
                                                                             <av:PointCollection x:Key="ConnectorLocation">1200,1172.5 1200,1222.5</av:PointCollection>
                                                                           </scg:Dictionary>
                                                                         </sap:WorkflowViewStateService.ViewState>
-                                                                        <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="AddQueueItem_5" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="myorder@Novozymes.com">
+                                                                        <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="AddQueueItem_5" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="[strAIType+&quot; &quot;+strAISubType]">
                                                                           <ui:AddQueueItem.ItemInformation>
                                                                             <InArgument x:TypeArguments="x:String" x:Key="ReceivedDate">[EachEmail.ReceivedDateTime.ToString]</InArgument>
                                                                             <InArgument x:TypeArguments="x:String" x:Key="FromEmailAddress">[EachEmail.From.Address]</InArgument>
@@ -1091,9 +1125,9 @@
                                                                   <FlowStep x:Name="__ReferenceID16">
                                                                     <sap:WorkflowViewStateService.ViewState>
                                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                        <av:Point x:Key="ShapeLocation">1300,984</av:Point>
+                                                                        <av:Point x:Key="ShapeLocation">1349,979.5</av:Point>
                                                                         <av:Size x:Key="ShapeSize">262,61</av:Size>
-                                                                        <av:PointCollection x:Key="ConnectorLocation">1431,1045 1400,1045 1400,1074</av:PointCollection>
+                                                                        <av:PointCollection x:Key="ConnectorLocation">1480,1040.5 1480,1070.5 1400,1070.5 1400,1074</av:PointCollection>
                                                                       </scg:Dictionary>
                                                                     </sap:WorkflowViewStateService.ViewState>
                                                                     <Assign sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_15">
@@ -1310,7 +1344,7 @@
                                 </Flowchart>
                               </TryCatch.Try>
                               <TryCatch.Catches>
-                                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1600,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                                <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="1649,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                                   <sap:WorkflowViewStateService.ViewState>
                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                       <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -1321,30 +1355,14 @@
                                     <ActivityAction.Argument>
                                       <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                                     </ActivityAction.Argument>
-                                    <Sequence sap:VirtualizedContainerService.HintSize="462,653" sap2010:WorkflowViewState.IdRef="Sequence_28">
+                                    <Sequence sap:VirtualizedContainerService.HintSize="400,268" sap2010:WorkflowViewState.IdRef="Sequence_28">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
-                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="400,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Failed for the subject&quot;+EachEmail.Subject]" />
-                                      <Sequence DisplayName="Data Extraction" sap:VirtualizedContainerService.HintSize="400,345" sap2010:WorkflowViewState.IdRef="Sequence_32">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_20">
-                                          <Assign.To>
-                                            <OutArgument x:TypeArguments="x:String">[strSubjectBodyFilePath]</OutArgument>
-                                          </Assign.To>
-                                          <Assign.Value>
-                                            <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory+"/Subject_Body+"+DateTime.Now.ToString("dd_MM_yyyy_hh_mm_ss")+".txt"]</InArgument>
-                                          </Assign.Value>
-                                        </Assign>
-                                        <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="[strSubjectBodyFilePath]" sap:VirtualizedContainerService.HintSize="338,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[EachEmail.Subject+vbNewLine+EachEmail.Body]" />
-                                      </Sequence>
-                                      <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="400,25" sap2010:WorkflowViewState.IdRef="AddQueueItem_3" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="myorder@Novozymes.com">
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Failed for the subject&quot;+EachEmail.Subject]" />
+                                      <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="338,25" sap2010:WorkflowViewState.IdRef="AddQueueItem_3" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="myorder@Novozymes.com">
                                         <ui:AddQueueItem.ItemInformation>
                                           <InArgument x:TypeArguments="x:String" x:Key="ReceivedDate">[EachEmail.ReceivedDateTime.ToString]</InArgument>
                                           <InArgument x:TypeArguments="x:String" x:Key="FromEmailAddress">[EachEmail.From.Address]</InArgument>

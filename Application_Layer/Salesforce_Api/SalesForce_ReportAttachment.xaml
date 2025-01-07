@@ -15,7 +15,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1136,3622</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1185,3403</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ReportAttachment_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="66">
@@ -102,7 +102,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Description: Workflow will connect to salesforce application and attach the generated report to the respective case" sap:VirtualizedContainerService.HintSize="807,3277" sap2010:WorkflowViewState.IdRef="Sequence_13">
+  <Sequence sap2010:Annotation.AnnotationText="Description: Workflow will connect to salesforce application and attach the generated report to the respective case" sap:VirtualizedContainerService.HintSize="807,3338" sap2010:WorkflowViewState.IdRef="Sequence_13">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -110,9 +110,9 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="745,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;WF:Starting- ReportAttachment&quot;]" />
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="745,3003" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="745,3064" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="ReportAttachment" sap:VirtualizedContainerService.HintSize="707,2775" sap2010:WorkflowViewState.IdRef="Sequence_1">
+        <Sequence DisplayName="ReportAttachment" sap:VirtualizedContainerService.HintSize="707,2836" sap2010:WorkflowViewState.IdRef="Sequence_1">
           <Sequence.Variables>
             <Variable x:TypeArguments="s:Byte[]" Name="fileData" />
             <Variable x:TypeArguments="x:String" Name="strResult" />
@@ -138,7 +138,7 @@
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign DisplayName="Assign boolean" sap:VirtualizedContainerService.HintSize="645,52" sap2010:WorkflowViewState.IdRef="Assign_9">
+          <Assign DisplayName="Assign boolean" sap:VirtualizedContainerService.HintSize="645,61" sap2010:WorkflowViewState.IdRef="Assign_9">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Boolean">[out_IsReportAttachedtoSF]</OutArgument>
             </Assign.To>
@@ -152,7 +152,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <Assign DisplayName="Assign-reading the  file" sap:VirtualizedContainerService.HintSize="645,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="Assign-reading the  file" sap:VirtualizedContainerService.HintSize="645,61" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="s:Byte[]">[fileData]</OutArgument>
             </Assign.To>
@@ -162,12 +162,8 @@
           </Assign>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SF_GenerateToken workflow" sap:VirtualizedContainerService.HintSize="645,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Application_Layer\Salesforce_Api\Salesforce_GetAuthToken.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <OutArgument x:TypeArguments="x:String" x:Key="out_authToken">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strToken" />
-              </OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_authAPI">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_API_JWT_Token" />
-              </InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_authToken">[strToken]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_authAPI">[in_API_JWT_Token]</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="645,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Tokn:&quot;+strToken.ToString]">
@@ -195,10 +191,10 @@
               <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
             </ui:HttpClient.UrlSegments>
           </ui:HttpClient>
-          <If Condition="[iCode=200 or iCode=201]" sap:VirtualizedContainerService.HintSize="645,52" sap2010:WorkflowViewState.IdRef="If_2">
+          <If Condition="[iCode=200 or iCode=201]" sap:VirtualizedContainerService.HintSize="645,251" sap2010:WorkflowViewState.IdRef="If_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -206,10 +202,10 @@
               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Creating content version of report&quot;]" />
             </If.Then>
             <If.Else>
-              <Throw Exception="[new Exception(&quot;Content version API is  failed  and Status code:&quot;+iCode.ToString)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_2" />
+              <Throw Exception="[new system.Exception(&quot;Content version API is  failed  and Status code: &quot;+iCode.ToString+vbNewLine+strResult_1)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_2" />
             </If.Else>
           </If>
-          <Assign sap:VirtualizedContainerService.HintSize="645,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign sap:VirtualizedContainerService.HintSize="645,61" sap2010:WorkflowViewState.IdRef="Assign_4">
             <Assign.To>
               <OutArgument x:TypeArguments="njl:JObject">[objResultJSON]</OutArgument>
             </Assign.To>
@@ -217,7 +213,7 @@
               <InArgument x:TypeArguments="njl:JObject">[JObject.Parse(strResult_1)]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="645,82" sap2010:WorkflowViewState.IdRef="Assign_5">
+          <Assign sap:VirtualizedContainerService.HintSize="645,61" sap2010:WorkflowViewState.IdRef="Assign_5">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[strId]</OutArgument>
             </Assign.To>
@@ -225,7 +221,7 @@
               <InArgument x:TypeArguments="x:String">[objResultJSON.SelectToken("id").ToString]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="645,82" sap2010:WorkflowViewState.IdRef="Assign_10">
+          <Assign sap:VirtualizedContainerService.HintSize="645,61" sap2010:WorkflowViewState.IdRef="Assign_10">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[iCode]</OutArgument>
             </Assign.To>
@@ -261,11 +257,11 @@
               <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,92" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Get content API is success&quot;]" />
             </If.Then>
             <If.Else>
-              <Throw Exception="[new Exception(&quot;Get Content Id API failed&quot;)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_3" />
+              <Throw Exception="[new system.Exception(&quot;Get Content Id API failed &quot;+vbNewLine+strResult_1)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_3" />
             </If.Else>
           </If>
           <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="645,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[JobjContent]" JsonString="[strContentDetails]" />
-          <Assign DisplayName="Assign - getting record" sap:VirtualizedContainerService.HintSize="645,82" sap2010:WorkflowViewState.IdRef="Assign_6">
+          <Assign DisplayName="Assign - getting record" sap:VirtualizedContainerService.HintSize="645,61" sap2010:WorkflowViewState.IdRef="Assign_6">
             <Assign.To>
               <OutArgument x:TypeArguments="njl:JToken">[JToken]</OutArgument>
             </Assign.To>
@@ -273,7 +269,7 @@
               <InArgument x:TypeArguments="njl:JToken">[JobjContent("records")]</InArgument>
             </Assign.Value>
           </Assign>
-          <Assign sap:VirtualizedContainerService.HintSize="645,82" sap2010:WorkflowViewState.IdRef="Assign_7">
+          <Assign sap:VirtualizedContainerService.HintSize="645,61" sap2010:WorkflowViewState.IdRef="Assign_7">
             <Assign.To>
               <OutArgument x:TypeArguments="scg:List(x:String)">[lstValue]</OutArgument>
             </Assign.To>
@@ -314,7 +310,7 @@
             </sap:WorkflowViewStateService.ViewState>
           </ui:ForEach>
           <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="645,92" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Content id : &quot;+strContentDocId]" />
-          <Assign sap:VirtualizedContainerService.HintSize="645,82" sap2010:WorkflowViewState.IdRef="Assign_11">
+          <Assign sap:VirtualizedContainerService.HintSize="645,61" sap2010:WorkflowViewState.IdRef="Assign_11">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[iCode]</OutArgument>
             </Assign.To>
@@ -366,7 +362,7 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Throw Exception="[new Exception (&quot;Content Document Link API failed and statuscode:&quot;+iCode.ToString)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_4" />
+              <Throw Exception="[new System.Exception (&quot;Content Document Link API failed and statuscode : &quot;+iCode.ToString+vbNewLine+strResult_1)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_4" />
             </If.Else>
           </If>
         </Sequence>
@@ -383,7 +379,7 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence sap:VirtualizedContainerService.HintSize="400,304" sap2010:WorkflowViewState.IdRef="Sequence_14">
+            <Sequence sap:VirtualizedContainerService.HintSize="400,301" sap2010:WorkflowViewState.IdRef="Sequence_14">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
