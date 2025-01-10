@@ -24,11 +24,12 @@
     <x:Property Name="in_PONumber" Type="InArgument(x:String)" />
     <x:Property Name="in_SONumber" Type="InArgument(x:String)" />
     <x:Property Name="in_DeliveryNumber" Type="InArgument(x:String)" />
+    <x:Property Name="in_AiPredictionLevel" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1269,1947</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1228,2070</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Salesforce_CreateACase_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
@@ -112,7 +113,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Salesforce_CreateACase" sap:VirtualizedContainerService.HintSize="546,1802" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Salesforce_CreateACase" sap:VirtualizedContainerService.HintSize="546,2005" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="bodyTxt" />
       <Variable x:TypeArguments="x:String" Name="responseJson" />
@@ -277,11 +278,12 @@
 	{"Priority",""+in_priority+""},
 	{"OTCPO_Number__c",""+in_PONumber+""},
 	{"OTCSO_Number__c",""+in_SONumber+""},
-	{"OTCDelivery_Number__c",""+in_DeliveryNumber+""}
+	{"OTCDelivery_Number__c",""+in_DeliveryNumber+""},
+	{"Note__c",""+in_AiPredictionLevel+""}
 }]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,52" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="484,255" sap2010:WorkflowViewState.IdRef="CommentOut_3">
       <ui:CommentOut.Body>
         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,176" sap2010:WorkflowViewState.IdRef="Sequence_9">
           <sap:WorkflowViewStateService.ViewState>
@@ -320,7 +322,7 @@
       </ui:CommentOut.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>

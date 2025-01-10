@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2190,3397</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2190,3277</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CM_Prediction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="96">
@@ -119,7 +119,6 @@
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>System.Data.Entity</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="CM_Prediction" sap:VirtualizedContainerService.HintSize="2200,3212" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -718,21 +717,13 @@ dtMaxPrediction.AsEnumerable.Where(Function(x) Not String.IsNullOrEmpty(x("SubTy
           </Sequence>
         </If.Then>
         <If.Else>
-          <Sequence sap:VirtualizedContainerService.HintSize="400,228" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <Sequence sap:VirtualizedContainerService.HintSize="400,136" sap2010:WorkflowViewState.IdRef="Sequence_6">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="CM_html.txt" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[strHttPBody]">
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
-                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
-            </ui:WriteTextFile>
             <Throw Exception="[new System.Exception(&quot;Failed to predict for the subject : &quot;+in_OutlookEmail.Subject+vbNewLine+strResonseContent)]" sap:VirtualizedContainerService.HintSize="338,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
           </Sequence>
         </If.Else>

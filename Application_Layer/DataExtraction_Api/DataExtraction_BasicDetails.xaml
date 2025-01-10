@@ -11,7 +11,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1183,1720</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1228,844</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DataExtraction_BasicDetails_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -96,7 +96,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DataExtraction_BasicDetails" sap:VirtualizedContainerService.HintSize="694,1615" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DataExtraction_BasicDetails" sap:VirtualizedContainerService.HintSize="493,659" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="retry" />
       <Variable x:TypeArguments="x:Boolean" Name="isFailed" />
@@ -111,7 +111,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="632,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+    <Assign sap:VirtualizedContainerService.HintSize="431,61" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Int32">[retry]</OutArgument>
       </Assign.To>
@@ -125,30 +125,30 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[isFailed = True and retry &lt; 5]" DisplayName="Try To call DataExtraction_BasicDetails" sap:VirtualizedContainerService.HintSize="632,930" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+    <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" Condition="[isFailed = True and retry &lt; 5]" DisplayName="Try To call DataExtraction_BasicDetails" sap:VirtualizedContainerService.HintSize="431,52" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
       <ui:InterruptibleDoWhile.Body>
-        <Sequence DisplayName="Call DataExtraction API" sap:VirtualizedContainerService.HintSize="596,764" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="Call DataExtraction API" sap:VirtualizedContainerService.HintSize="400,264" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <TryCatch DisplayName="Hit API" sap:VirtualizedContainerService.HintSize="534,531" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+          <TryCatch DisplayName="Hit API" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="TryCatch_1">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <TryCatch.Try>
-              <Sequence DisplayName="Hit API" sap:VirtualizedContainerService.HintSize="496,303" sap2010:WorkflowViewState.IdRef="Sequence_2">
+              <Sequence DisplayName="Hit API" sap:VirtualizedContainerService.HintSize="400,282" sap2010:WorkflowViewState.IdRef="Sequence_2">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_2">
+                <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_2">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Boolean">[isFailed]</OutArgument>
                   </Assign.To>
@@ -156,11 +156,9 @@
                     <InArgument x:TypeArguments="x:Boolean">False</InArgument>
                   </Assign.Value>
                 </Assign>
-                <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/json" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[in_DataExtraction_BasicDetails_Api]" sap:VirtualizedContainerService.HintSize="434,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" OAuth2Token="[in_Token]" Result="[strJson]" StatusCode="[statusCode]" TimeoutMS="30000">
+                <ui:HttpClient Body="{x:Null}" ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" BodyFormat="application/json" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[in_DataExtraction_BasicDetails_Api]" sap:VirtualizedContainerService.HintSize="338,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" OAuth2Token="[in_Token]" Result="[strJson]" StatusCode="[statusCode]" TimeoutMS="30000">
                   <ui:HttpClient.Attachments>
-                    <InArgument x:TypeArguments="x:String" x:Key="file">
-                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Filepath" />
-                    </InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="file">[in_Filepath]</InArgument>
                   </ui:HttpClient.Attachments>
                   <ui:HttpClient.Cookies>
                     <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
@@ -178,7 +176,7 @@
               </Sequence>
             </TryCatch.Try>
             <TryCatch.Catches>
-              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="500,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+              <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="404,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -189,7 +187,7 @@
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
                   </ActivityAction.Argument>
-                  <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_3">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:Boolean">[isFailed]</OutArgument>
                     </Assign.To>
@@ -201,7 +199,7 @@
               </Catch>
             </TryCatch.Catches>
           </TryCatch>
-          <Assign sap:VirtualizedContainerService.HintSize="534,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_4">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[retry]</OutArgument>
             </Assign.To>
@@ -213,15 +211,15 @@
       </ui:InterruptibleDoWhile.Body>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InterruptibleDoWhile>
-    <If Condition="[statusCode = 200]" DisplayName="If Status Code 200" sap:VirtualizedContainerService.HintSize="632,220" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[statusCode = 200]" DisplayName="If Status Code 200" sap:VirtualizedContainerService.HintSize="431,52" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
@@ -229,8 +227,8 @@
         <Throw Exception="[new System.Exception(&quot;Unable to fetch data from basic details from content. Exception Detail: &quot;+ strJson)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
       </If.Else>
     </If>
-    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="632,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[jsonObject]" JsonString="[strJson]" />
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="632,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="431,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_2" JsonObject="[jsonObject]" JsonString="[strJson]" />
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="431,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -238,7 +236,9 @@
               <OutArgument x:TypeArguments="x:String">[out_DeliveryNumber]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[jsonObject.SelectToken("data")("Delivery number").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(String.IsNullOrEmpty(jsonObject.SelectToken("data")("Delivery_number").ToString),"",
+If(jsonObject.SelectToken("data")("Delivery_number").ToString.Length&gt;131072,
+	jsonObject.SelectToken("data")("Delivery_number").ToString.Substring(0,131070),jsonObject.SelectToken("data")("Delivery_number").ToString))]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -246,7 +246,9 @@
               <OutArgument x:TypeArguments="x:String">[out_PurchaseOrderNumber]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[jsonObject.SelectToken("data")("Purchase order number").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(String.IsNullOrEmpty(jsonObject.SelectToken("data")("Purchase_order_number").ToString),"",
+If(jsonObject.SelectToken("data")("Purchase_order_number").ToString.Length&gt;255,
+	jsonObject.SelectToken("data")("Purchase_order_number").ToString.Substring(0,254),jsonObject.SelectToken("data")("Purchase_order_number").ToString))]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_3">
@@ -254,14 +256,16 @@
               <OutArgument x:TypeArguments="x:String">[out_SalesOrderNumber]</OutArgument>
             </ui:AssignOperation.To>
             <ui:AssignOperation.Value>
-              <InArgument x:TypeArguments="x:String">[jsonObject.SelectToken("data")("Sales order number").ToString]</InArgument>
+              <InArgument x:TypeArguments="x:String" xml:space="preserve">[If(String.IsNullOrEmpty(jsonObject.SelectToken("data")("Sales_order_number").ToString),"",
+If(jsonObject.SelectToken("data")("Sales_order_number").ToString.Length&gt;255,
+	jsonObject.SelectToken("data")("Sales_order_number").ToString.Substring(0,254),jsonObject.SelectToken("data")("Sales_order_number").ToString))]</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>

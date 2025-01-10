@@ -32,7 +32,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1232,2253</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1228,2253</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Salesforce_CreateACase_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="68">
@@ -123,11 +123,11 @@
       <AssemblyReference>UiPath.MicrosoftOffice365.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>UiPath.Platform</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
       <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Salesforce_CreateEmailObject" sap:VirtualizedContainerService.HintSize="1099,2188" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Salesforce_CreateEmailObject" sap:VirtualizedContainerService.HintSize="648,2188" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="bodyTxt" />
       <Variable x:TypeArguments="x:String" Name="responseJson" />
@@ -143,7 +143,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="1037,61" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <Assign sap:VirtualizedContainerService.HintSize="586,61" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_emailObID]</OutArgument>
       </Assign.To>
@@ -151,7 +151,7 @@
         <InArgument x:TypeArguments="x:String">[String.Empty]</InArgument>
       </Assign.Value>
     </Assign>
-    <If sap2010:Annotation.AnnotationText="Make the Subject JSON Safe" Condition="[String.IsNullOrEmpty(in_subject.Trim) or in_subject.Trim.Length &lt; 2]" DisplayName="If Not a Blank Subect" sap:VirtualizedContainerService.HintSize="1037,83" sap2010:WorkflowViewState.IdRef="If_2">
+    <If sap2010:Annotation.AnnotationText="Make the Subject JSON Safe" Condition="[String.IsNullOrEmpty(in_subject.Trim) or in_subject.Trim.Length &lt; 2]" DisplayName="If Not a Blank Subect" sap:VirtualizedContainerService.HintSize="586,83" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -195,7 +195,7 @@
         </Sequence>
       </If.Else>
     </If>
-    <If sap2010:Annotation.AnnotationText="Make the Body JSON Safe" Condition="[String.IsNullOrEmpty(in_body.Trim) or in_body.Trim.Length &lt; 2]" DisplayName="If Not a Blank Body" sap:VirtualizedContainerService.HintSize="1037,708" sap2010:WorkflowViewState.IdRef="If_3">
+    <If sap2010:Annotation.AnnotationText="Make the Body JSON Safe" Condition="[String.IsNullOrEmpty(in_body.Trim) or in_body.Trim.Length &lt; 2]" DisplayName="If Not a Blank Body" sap:VirtualizedContainerService.HintSize="586,708" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -278,26 +278,18 @@
           </ui:CommentOut>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="GetFirst100kCharsOfEmail.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="379,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Application_Layer\Salesforce_Api\GetFirst100kCharsOfEmail.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <OutArgument x:TypeArguments="x:String" x:Key="out_htmlBody">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="htmlBody" />
-              </OutArgument>
-              <OutArgument x:TypeArguments="x:String" x:Key="out_extraBody">
-                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strExtraBody" />
-              </OutArgument>
-              <InArgument x:TypeArguments="x:String" x:Key="in_emaillBody">
-                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Newtonsoft.Json.JsonConvert.SerializeObject(in_HtmlBody).Trim" />
-              </InArgument>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_bodyLength">
-                <Literal x:TypeArguments="x:Int32" Value="131070" />
-              </InArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_htmlBody">[htmlBody]</OutArgument>
+              <OutArgument x:TypeArguments="x:String" x:Key="out_extraBody">[strExtraBody]</OutArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_emaillBody">[Newtonsoft.Json.JsonConvert.SerializeObject(in_HtmlBody).Trim]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_bodyLength">131070</InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
         </Sequence>
       </If.Else>
     </If>
-    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1037,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="586,52" sap2010:WorkflowViewState.IdRef="CommentOut_2">
       <ui:CommentOut.Body>
-        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,163" sap2010:WorkflowViewState.IdRef="Sequence_7">
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="1099,163" sap2010:WorkflowViewState.IdRef="Sequence_7">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -371,7 +363,7 @@ in_caseID.Trim, in_fromEmail.Trim, in_fromName.Trim, in_subject.Trim, htmlBody, 
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:CommentOut>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Salesforce_Api\Salesforce_GetAuthToken.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="1037,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Application_Layer\Salesforce_Api\Salesforce_GetAuthToken.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Salesforce_Api\Salesforce_GetAuthToken.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="586,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Application_Layer\Salesforce_Api\Salesforce_GetAuthToken.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="x:String" x:Key="out_authToken">[strAuthToken]</OutArgument>
         <InArgument x:TypeArguments="x:String" x:Key="in_authAPI">https://test.salesforce.com/services/oauth2/token?grant_type=password&amp;client_id=3MVG9KAEr0ABaqiohxfQdw9yBxc3Ws5GEI54gulxjk_k72Xj5VFJSrLKURELTvlAX5oiWvISBvWK9rBnaZrVi&amp;client_secret=C7E295C4B370F5FD7058EE4C448B5165BB7F42EF8C51DF7E72EFBD57869A51CC&amp;username=da_sf_user@novozymes.com.uat&amp;password=Robotic_Sanbox@2025EXneHCL96FakvIgCdySfRiGX</InArgument>
@@ -383,7 +375,7 @@ in_caseID.Trim, in_fromEmail.Trim, in_fromName.Trim, in_subject.Trim, htmlBody, 
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <Assign sap:VirtualizedContainerService.HintSize="1037,65" sap2010:WorkflowViewState.IdRef="Assign_13">
+    <Assign sap:VirtualizedContainerService.HintSize="586,65" sap2010:WorkflowViewState.IdRef="Assign_13">
       <Assign.To>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)">[DictJsonContent]</OutArgument>
       </Assign.To>
@@ -399,7 +391,7 @@ in_caseID.Trim, in_fromEmail.Trim, in_fromName.Trim, in_subject.Trim, htmlBody, 
 }]</InArgument>
       </Assign.Value>
     </Assign>
-    <Assign sap:VirtualizedContainerService.HintSize="1037,61" sap2010:WorkflowViewState.IdRef="Assign_14">
+    <Assign sap:VirtualizedContainerService.HintSize="586,61" sap2010:WorkflowViewState.IdRef="Assign_14">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[bodyTxt]</OutArgument>
       </Assign.To>
@@ -407,7 +399,7 @@ in_caseID.Trim, in_fromEmail.Trim, in_fromName.Trim, in_subject.Trim, htmlBody, 
         <InArgument x:TypeArguments="x:String">[newtonsoft.Json.JsonConvert.SerializeObject(DictJsonContent)]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[bodyTxt]" BodyFormat="application/json" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[in_emailCreationAPI]" sap:VirtualizedContainerService.HintSize="1037,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" OAuth2Token="[strAuthToken]" Result="[responseJson]" StatusCode="[statusCode]" TimeoutMS="30000">
+    <ui:HttpClient ClientCertificate="{x:Null}" ClientCertificatePassword="{x:Null}" ConsumerKey="{x:Null}" ConsumerSecret="{x:Null}" ContinueOnError="{x:Null}" FileAttachments="{x:Null}" OAuth1Token="{x:Null}" OAuth1TokenSecret="{x:Null}" Password="{x:Null}" ResourcePath="{x:Null}" ResponseAttachment="{x:Null}" ResponseHeaders="{x:Null}" SecureClientCertificatePassword="{x:Null}" SecurePassword="{x:Null}" Username="{x:Null}" AcceptFormat="ANY" AuthenticationType="None" Body="[bodyTxt]" BodyFormat="application/json" DisplayName="HTTP Request" EnableSSLVerification="True" EndPoint="[in_emailCreationAPI]" sap:VirtualizedContainerService.HintSize="586,70" sap2010:WorkflowViewState.IdRef="HttpClient_1" Method="POST" OAuth2Token="[strAuthToken]" Result="[responseJson]" StatusCode="[statusCode]" TimeoutMS="30000">
       <ui:HttpClient.Attachments>
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.Attachments>
@@ -424,7 +416,7 @@ in_caseID.Trim, in_fromEmail.Trim, in_fromName.Trim, in_subject.Trim, htmlBody, 
         <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
       </ui:HttpClient.UrlSegments>
     </ui:HttpClient>
-    <If Condition="[statusCode = 200 or statusCode = 201]" DisplayName="If Status Code = 200 or 201" sap:VirtualizedContainerService.HintSize="1037,219" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[statusCode = 200 or statusCode = 201]" DisplayName="If Status Code = 200 or 201" sap:VirtualizedContainerService.HintSize="586,219" sap2010:WorkflowViewState.IdRef="If_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -435,7 +427,7 @@ in_caseID.Trim, in_fromEmail.Trim, in_fromName.Trim, in_subject.Trim, htmlBody, 
         <Throw Exception="[new System.Exception(&quot;Unable to create an email object for case id &quot;+in_caseID+&quot; using Salesforce API. Exception Detail: &quot; + responseJson)]" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="Throw_1" />
       </If.Else>
     </If>
-    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="1037,52" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_3" JsonObject="[jsonObj]" JsonString="[responseJson]">
+    <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="586,52" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_3" JsonObject="[jsonObj]" JsonString="[responseJson]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -443,7 +435,7 @@ in_caseID.Trim, in_fromEmail.Trim, in_fromName.Trim, in_subject.Trim, htmlBody, 
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:DeserializeJson>
-    <Assign sap:VirtualizedContainerService.HintSize="1037,61" sap2010:WorkflowViewState.IdRef="Assign_5">
+    <Assign sap:VirtualizedContainerService.HintSize="586,61" sap2010:WorkflowViewState.IdRef="Assign_5">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[out_emailObID]</OutArgument>
       </Assign.To>
@@ -451,6 +443,6 @@ in_caseID.Trim, in_fromEmail.Trim, in_fromName.Trim, in_subject.Trim, htmlBody, 
         <InArgument x:TypeArguments="x:String">[jsonObj("id").ToString.Trim]</InArgument>
       </Assign.Value>
     </Assign>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1037,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Email object created successfully for Case ID: &quot; + in_caseID]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="586,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Email object created successfully for Case ID: &quot; + out_emailObID]" />
   </Sequence>
 </Activity>

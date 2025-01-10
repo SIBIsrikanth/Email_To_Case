@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1978,3123</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2027,3104</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Adding_Emails_Queue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -118,10 +118,9 @@
       <AssemblyReference>System.Data.Entity</AssemblyReference>
       <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Web</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Adding_Emails_Queue" sap:VirtualizedContainerService.HintSize="1988,3018" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Adding_Emails_Queue" sap:VirtualizedContainerService.HintSize="2037,3039" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="umm:Office365Message[]" Name="lstEmails" />
       <Variable x:TypeArguments="x:String" Name="strLatestMailBody" />
@@ -147,14 +146,14 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitAllSettings workflow" sap:VirtualizedContainerService.HintSize="1926,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke InitAllSettings workflow" sap:VirtualizedContainerService.HintSize="1975,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">Data\Input\Config.xlsx</InArgument>
         <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings","Constants"}]</InArgument>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[in_Config]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <Assign sap:VirtualizedContainerService.HintSize="1926,61" sap2010:WorkflowViewState.IdRef="Assign_9">
+    <Assign sap:VirtualizedContainerService.HintSize="1975,61" sap2010:WorkflowViewState.IdRef="Assign_9">
       <Assign.To>
         <OutArgument x:TypeArguments="x:String">[strMailFolderName]</OutArgument>
       </Assign.To>
@@ -168,31 +167,31 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1926,2653" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[strMailFolderName.Split(&quot;,&quot;.ToCharArray)]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1975,2674" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[strMailFolderName.Split(&quot;,&quot;.ToCharArray)]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="mailAccountFolder" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1890,2528" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1939,2549" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_Config(&quot;ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;ApplicationSecret&quot;).ToString]" AuthenticationType="InteractiveToken" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="1828,2417" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="Custom" Services="Files, Mail, Shared" Tenant="[in_Config(&quot;TenantID&quot;).ToString]">
+            <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_Config(&quot;ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;ApplicationSecret&quot;).ToString]" AuthenticationType="InteractiveToken" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="1877,2438" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="Custom" Services="Files, Mail, Shared" Tenant="[in_Config(&quot;TenantID&quot;).ToString]">
               <uma:Office365ApplicationScope.Body>
                 <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                   </ActivityAction.Argument>
-                  <Sequence sap:VirtualizedContainerService.HintSize="1794,2330" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <Sequence sap:VirtualizedContainerService.HintSize="1843,2351" sap2010:WorkflowViewState.IdRef="Sequence_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1732,52" sap2010:WorkflowViewState.IdRef="CommentOut_9">
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1781,52" sap2010:WorkflowViewState.IdRef="CommentOut_9">
                       <ui:CommentOut.Body>
                         <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,136" sap2010:WorkflowViewState.IdRef="Sequence_41">
                           <sap:WorkflowViewStateService.ViewState>
@@ -210,21 +209,22 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:CommentOut>
-                    <umam:GetMail EmailId="{x:Null}" Account="myorder@novozymes.com" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="1732,25" sap2010:WorkflowViewState.IdRef="GetMail_4" MailFolder="Inbox" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Query="ReceivedDateTime ge 2024-08-08T00:00:00Z And ReceivedDateTime le 2024-08-08T23:59:59Z" Results="[lstEmails]" Top="[int32.MaxValue]" />
-                    <ui:ForEach x:TypeArguments="umm:Office365Message" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1781,2062" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[lstEmails]">
+                    <umam:GetMail EmailId="{x:Null}" Account="myorder@novozymes.com" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="1781,25" sap2010:WorkflowViewState.IdRef="GetMail_4" MailFolder="Inbox" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Query="ReceivedDateTime ge 2024-08-16T00:00:00Z And ReceivedDateTime le 2024-08-20T23:59:59Z" Results="[lstEmails]" Top="[int32.MaxValue]" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1781,92" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Total email count : &quot;+lstEmails.Count.ToString]" />
+                    <ui:ForEach x:TypeArguments="umm:Office365Message" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1781,1951" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[lstEmails]">
                       <ui:ForEach.Body>
                         <ActivityAction x:TypeArguments="umm:Office365Message">
                           <ActivityAction.Argument>
                             <DelegateInArgument x:TypeArguments="umm:Office365Message" Name="EachEmail" />
                           </ActivityAction.Argument>
-                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1745,1937" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1745,1826" sap2010:WorkflowViewState.IdRef="Sequence_4">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1683,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                            <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="1683,52" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
                               <ui:MultipleAssign.AssignOperations>
                                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
                                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_2">
@@ -255,7 +255,7 @@
                               </ui:MultipleAssign.AssignOperations>
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
@@ -286,7 +286,7 @@
                                   <Flowchart.StartNode>
                                     <x:Reference>__ReferenceID21</x:Reference>
                                   </Flowchart.StartNode>
-                                  <FlowDecision x:Name="__ReferenceID21" Condition="[System.Text.RegularExpressions.Regex.Match(EachEmail.Sender.ToString.ToLower, &quot;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}&quot;).Value.ToLower.Trim.Contains(&quot;noreply@novonesis.com&quot;) or System.Text.RegularExpressions.Regex.Match(EachEmail.Sender.ToString.ToLower, &quot;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}&quot;).Value.ToLower.Trim.Contains(&quot;noreply@novozymes.com&quot;)]" DisplayName="Filtering Junk email...?" sap:VirtualizedContainerService.HintSize="122,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                                  <FlowDecision x:Name="__ReferenceID21" Condition="[EachEmail.Sender.Address.ToString.ToLower=&quot;noreply@novonesis.com&quot; Or&#xA;in_Config(&quot;No-ReplyList&quot;).ToString.tolower.Split(&quot;,&quot;C).Any(Function(x) x.Equals(EachEmail.Sender.Address.ToString.ToLower.Trim))]" DisplayName="Filtering Junk email...?" sap:VirtualizedContainerService.HintSize="122,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -430,12 +430,8 @@
                                             </sap:WorkflowViewStateService.ViewState>
                                             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetLatestEmail workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Data_Layer\Email_Utils\GetLatestEmail.xaml">
                                               <ui:InvokeWorkflowFile.Arguments>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_emailBody">
-                                                  <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="System.Web.HttpUtility.HtmlDecode(EachEmail.Body.ToString)" />
-                                                </InArgument>
-                                                <OutArgument x:TypeArguments="x:String" x:Key="out_latestEmail">
-                                                  <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strLatestMailBody" />
-                                                </OutArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_emailBody">[System.Web.HttpUtility.HtmlDecode(EachEmail.Body.ToString)]</InArgument>
+                                                <OutArgument x:TypeArguments="x:String" x:Key="out_latestEmail">[strLatestMailBody]</OutArgument>
                                               </ui:InvokeWorkflowFile.Arguments>
                                               <sap:WorkflowViewStateService.ViewState>
                                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -580,7 +576,14 @@
                                                               <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory+"\PDF_Folder"]</InArgument>
                                                             </Assign.Value>
                                                           </Assign>
-                                                          <ui:FolderExistsX DisplayName="Folder Exists" Exists="[blnPDFFolderAttachmentExits]" sap:VirtualizedContainerService.HintSize="540,133" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[strPDFAttachmentFolder]" />
+                                                          <ui:FolderExistsX DisplayName="Folder Exists" Exists="[blnPDFFolderAttachmentExits]" sap:VirtualizedContainerService.HintSize="540,52" sap2010:WorkflowViewState.IdRef="FolderExistsX_1" Path="[strPDFAttachmentFolder]">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                          </ui:FolderExistsX>
                                                           <If Condition="[blnPDFFolderAttachmentExits]" sap:VirtualizedContainerService.HintSize="540,52" sap2010:WorkflowViewState.IdRef="If_9">
                                                             <sap:WorkflowViewStateService.ViewState>
                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -615,8 +618,22 @@
                                                               </Sequence>
                                                             </If.Else>
                                                           </If>
-                                                          <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="540,80" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[strPDFAttachmentFolder]" />
-                                                          <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" FolderPath="[strPDFAttachmentFolder]" sap:VirtualizedContainerService.HintSize="540,90" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[CType(EachEmail,System.Net.Mail.MailMessage)]" OverwriteExisting="False" />
+                                                          <ui:CreateDirectory ContinueOnError="{x:Null}" Output="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="540,52" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[strPDFAttachmentFolder]">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                          </ui:CreateDirectory>
+                                                          <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" FolderPath="[strPDFAttachmentFolder]" sap:VirtualizedContainerService.HintSize="540,52" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[CType(EachEmail,System.Net.Mail.MailMessage)]" OverwriteExisting="False">
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                          </ui:SaveMailAttachments>
                                                           <If Condition="[system.io.Directory.GetFiles(strPDFAttachmentFolder).where(Function(x) path.GetExtension(x.ToString.ToLower).Equals(&quot;.pdf&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.docs&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.docx&quot;) Or path.GetExtension(x.ToString.ToLower).Equals(&quot;.doc&quot;)).Count&gt;0]" sap:VirtualizedContainerService.HintSize="540,942" sap2010:WorkflowViewState.IdRef="If_8">
                                                             <sap:WorkflowViewStateService.ViewState>
                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -933,30 +950,14 @@
                                                           </sap:WorkflowViewStateService.ViewState>
                                                           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CM_Prediction workflow" sap:VirtualizedContainerService.HintSize="779,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Application_Layer\CommunicationMining_Api\CM_Prediction.xaml">
                                                             <ui:InvokeWorkflowFile.Arguments>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="in_PredictionAPi">
-                                                                <Literal x:TypeArguments="x:String">https://cloud.uipath.com/novonesis_rpa/Novonesis/reinfer_/api/v1/datasets/na_emails_classification/na_emails/labellers/2093/predict-raw-emails</Literal>
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="in_CM_Token">
-                                                                <Literal x:TypeArguments="x:String">WSUSSJU7O645RQBSJFUUHC7ZRMPUTBKKKKSD2KOLX763MCXO</Literal>
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="umm:Office365Message" x:Key="in_OutlookEmail">
-                                                                <mva:VisualBasicValue x:TypeArguments="umm:Office365Message" ExpressionText="EachEmail" />
-                                                              </InArgument>
-                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AIPrediction">
-                                                                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strAIPrediction" />
-                                                              </OutArgument>
-                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AIType">
-                                                                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strAIType" />
-                                                              </OutArgument>
-                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AISubType">
-                                                                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strAISubType" />
-                                                              </OutArgument>
-                                                              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_LabelProperties">
-                                                                <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtLableProperties" />
-                                                              </OutArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="strLatestEmailBody">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strLatestMailBody" />
-                                                              </InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="in_PredictionAPi">https://cloud.uipath.com/novonesis_rpa/Novonesis/reinfer_/api/v1/datasets/na_emails_classification/na_emails/labellers/2093/predict-raw-emails</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="in_CM_Token">WSUSSJU7O645RQBSJFUUHC7ZRMPUTBKKKKSD2KOLX763MCXO</InArgument>
+                                                              <InArgument x:TypeArguments="umm:Office365Message" x:Key="in_OutlookEmail">[EachEmail]</InArgument>
+                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AIPrediction">[strAIPrediction]</OutArgument>
+                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AIType">[strAIType]</OutArgument>
+                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AISubType">[strAISubType]</OutArgument>
+                                                              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_LabelProperties">[dtLableProperties]</OutArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="strLatestEmailBody">[strLatestMailBody]</InArgument>
                                                             </ui:InvokeWorkflowFile.Arguments>
                                                           </ui:InvokeWorkflowFile>
                                                           <If Condition="[If(String.IsNullOrEmpty(strAIType),False,if(strAIType.ToLower.Contains(&quot;urgent&quot;),True,False))]" DisplayName="If type is urgent?" sap:VirtualizedContainerService.HintSize="779,331" sap2010:WorkflowViewState.IdRef="If_2">

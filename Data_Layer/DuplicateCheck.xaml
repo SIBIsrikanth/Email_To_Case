@@ -17,7 +17,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1710,1148</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1228,823</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>DuplicateCheck_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -95,7 +95,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="DuplicateCheck" sap:VirtualizedContainerService.HintSize="1720,1084" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="DuplicateCheck" sap:VirtualizedContainerService.HintSize="400,396" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strPONumber" />
     </Sequence.Variables>
@@ -104,7 +104,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Assign sap:VirtualizedContainerService.HintSize="1658,82" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Boolean">[out_IsDuplicateCheck]</OutArgument>
       </Assign.To>
@@ -117,7 +117,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <Flowchart DisplayName="Checking Po number" sap:VirtualizedContainerService.HintSize="1658,851" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart DisplayName="Checking Po number" sap:VirtualizedContainerService.HintSize="338,52" sap2010:WorkflowViewState.IdRef="Flowchart_1">
       <Flowchart.Variables>
         <Variable x:TypeArguments="x:Boolean" Name="blnCaseNotFoundActive" />
         <Variable x:TypeArguments="x:String" Name="strType" />
@@ -125,7 +125,7 @@
       </Flowchart.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
           <x:Boolean x:Key="IsPinned">False</x:Boolean>
           <av:Point x:Key="ShapeLocation">40,12.5</av:Point>
           <av:Size x:Key="ShapeSize">60,75</av:Size>
@@ -202,7 +202,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <av:Point x:Key="ShapeLocation">236,126.5</av:Point>
                 <av:Size x:Key="ShapeSize">128,87</av:Size>
-                <av:PointCollection x:Key="TrueConnector">236,170 110,170 110,314</av:PointCollection>
+                <av:PointCollection x:Key="TrueConnector">236,170 141,170 141,314</av:PointCollection>
                 <av:PointCollection x:Key="FalseConnector">364,170 380,170 380,214 350,214 350,270 380,270</av:PointCollection>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -211,10 +211,10 @@
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">10,314</av:Point>
-                    <av:Size x:Key="ShapeSize">200,52</av:Size>
+                    <av:Size x:Key="ShapeSize">262,61</av:Size>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Assign sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_3">
+                <Assign sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_3">
                   <Assign.To>
                     <OutArgument x:TypeArguments="x:Boolean">[out_IsDuplicateCheck]</OutArgument>
                   </Assign.To>
@@ -240,36 +240,16 @@
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke SalesForce_CheckCaseOpen_Close workflow" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Application_Layer\Salesforce_Api\SalesForce_CheckCaseOpen_Close.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_CheckOpenCasesApi">
-                      <Literal x:TypeArguments="x:String">https://novonesis--uat.sandbox.my.salesforce.com/services/data/v57.0/query/?q=SELECT+Id+,+Description+,+Status+,+Handler__c+,+Type+,+Sub_type__c+,+CaseNumber+,+Priority+,+Account_Name__c+,+Account_Type__c+,+Sales_Region_Name__c+,+CreatedDate+,+Number_of_Case_Product__c+,+Add_Product_code__c+,+OTCPO_Number__c+,+OTCSO_Number__c+,+Case_Products_Reviewed__c+,+Is_Parent_Case__c+,+ParentId+from+Case+WHERE(+Status!=+'closed')+and+CaseNumber=+'{0}'</Literal>
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_CheckClosedCasesApi">
-                      <Literal x:TypeArguments="x:String">https://novonesis--uat.sandbox.my.salesforce.com/services/data/v57.0/query/?q=SELECT+Id+,+Description+,+Status+,+Handler__c+,+Type+,+Sub_type__c+,+CaseNumber+,+Priority+,+Account_Name__c+,+Account_Type__c+,+Sales_Region_Name__c+,+CreatedDate+,+Number_of_Case_Product__c+,+Add_Product_code__c+,+OTCPO_Number__c+,+OTCSO_Number__c+,+Case_Products_Reviewed__c+,+Is_Parent_Case__c+,+ParentId+from+Case+WHERE(+Status=+'closed')+and+(Createddate+&gt;+N_DAYS_AGO:30)+and+CaseNumber=+'{0}'</Literal>
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_CaseNumber">
-                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="outCaseNumber" />
-                    </InArgument>
-                    <InArgument x:TypeArguments="x:String" x:Key="in_Authentication_Api">
-                      <Literal x:TypeArguments="x:String">https://test.salesforce.com/services/oauth2/token?grant_type=password&amp;client_id=3MVG9KAEr0ABaqiohxfQdw9yBxc3Ws5GEI54gulxjk_k72Xj5VFJSrLKURELTvlAX5oiWvISBvWK9rBnaZrVi&amp;client_secret=C7E295C4B370F5FD7058EE4C448B5165BB7F42EF8C51DF7E72EFBD57869A51CC&amp;username=da_sf_user@novozymes.com.uat&amp;password=Robotic_Sanbox@2025EXneHCL96FakvIgCdySfRiGX</Literal>
-                    </InArgument>
-                    <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_Closed">
-                      <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="out_Closed" />
-                    </OutArgument>
-                    <OutArgument x:TypeArguments="x:String" x:Key="out_PONumber">
-                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strPONumber" />
-                    </OutArgument>
-                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_CaseNotFound">
-                      <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="blnCaseNotFoundActive" />
-                    </OutArgument>
-                    <OutArgument x:TypeArguments="x:String" x:Key="out_Type">
-                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strType" />
-                    </OutArgument>
-                    <OutArgument x:TypeArguments="x:String" x:Key="out_SubType">
-                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strSubType" />
-                    </OutArgument>
-                    <OutArgument x:TypeArguments="x:String" x:Key="out_CaseId">
-                      <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_CaseID" />
-                    </OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_CheckOpenCasesApi">https://novonesis--uat.sandbox.my.salesforce.com/services/data/v57.0/query/?q=SELECT+Id+,+Description+,+Status+,+Handler__c+,+Type+,+Sub_type__c+,+CaseNumber+,+Priority+,+Account_Name__c+,+Account_Type__c+,+Sales_Region_Name__c+,+CreatedDate+,+Number_of_Case_Product__c+,+Add_Product_code__c+,+OTCPO_Number__c+,+OTCSO_Number__c+,+Case_Products_Reviewed__c+,+Is_Parent_Case__c+,+ParentId+from+Case+WHERE(+Status!=+'closed')+and+CaseNumber=+'{0}'</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_CheckClosedCasesApi">https://novonesis--uat.sandbox.my.salesforce.com/services/data/v57.0/query/?q=SELECT+Id+,+Description+,+Status+,+Handler__c+,+Type+,+Sub_type__c+,+CaseNumber+,+Priority+,+Account_Name__c+,+Account_Type__c+,+Sales_Region_Name__c+,+CreatedDate+,+Number_of_Case_Product__c+,+Add_Product_code__c+,+OTCPO_Number__c+,+OTCSO_Number__c+,+Case_Products_Reviewed__c+,+Is_Parent_Case__c+,+ParentId+from+Case+WHERE(+Status=+'closed')+and+(Createddate+&gt;+N_DAYS_AGO:30)+and+CaseNumber=+'{0}'</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_CaseNumber">[outCaseNumber]</InArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="in_Authentication_Api">https://test.salesforce.com/services/oauth2/token?grant_type=password&amp;client_id=3MVG9KAEr0ABaqiohxfQdw9yBxc3Ws5GEI54gulxjk_k72Xj5VFJSrLKURELTvlAX5oiWvISBvWK9rBnaZrVi&amp;client_secret=C7E295C4B370F5FD7058EE4C448B5165BB7F42EF8C51DF7E72EFBD57869A51CC&amp;username=da_sf_user@novozymes.com.uat&amp;password=Robotic_Sanbox@2025EXneHCL96FakvIgCdySfRiGX</InArgument>
+                    <OutArgument x:TypeArguments="x:Boolean" x:Key="Out_Closed">[out_Closed]</OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_PONumber">[strPONumber]</OutArgument>
+                    <OutArgument x:TypeArguments="x:Boolean" x:Key="out_CaseNotFound">[blnCaseNotFoundActive]</OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_Type">[strType]</OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_SubType">[strSubType]</OutArgument>
+                    <OutArgument x:TypeArguments="x:String" x:Key="out_CaseId">[out_CaseID]</OutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -284,7 +264,7 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         <av:Point x:Key="ShapeLocation">660.5,296.5</av:Point>
                         <av:Size x:Key="ShapeSize">87,87</av:Size>
-                        <av:PointCollection x:Key="TrueConnector">660.5,340 210,340</av:PointCollection>
+                        <av:PointCollection x:Key="TrueConnector">660.5,340 630.5,340 630.5,344.5 272,344.5</av:PointCollection>
                         <av:PointCollection x:Key="FalseConnector">747.5,340 882.5,340 882.5,386.5</av:PointCollection>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
@@ -295,44 +275,32 @@
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <av:Point x:Key="ShapeLocation">830.5,386.5</av:Point>
                             <av:Size x:Key="ShapeSize">104,87</av:Size>
-                            <av:PointCollection x:Key="TrueConnector">830.5,430 110,430 110,366</av:PointCollection>
+                            <av:PointCollection x:Key="TrueConnector">830.5,430 141,430 141,375</av:PointCollection>
                             <av:PointCollection x:Key="FalseConnector">934.5,430 1039.5,430 1039.5,496.5</av:PointCollection>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <FlowDecision.False>
-                          <FlowDecision x:Name="__ReferenceID6" DisplayName="AI Confidence &gt;9" sap:VirtualizedContainerService.HintSize="98,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
-                            <FlowDecision.Condition>
-                              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="if(String.IsNullOrEmpty(in_AIConfidence),False,if(CInt(cdbl(in_AIConfidence)*100)&gt;90,False,true))" />
-                            </FlowDecision.Condition>
+                          <FlowDecision x:Name="__ReferenceID6" Condition="[if(String.IsNullOrEmpty(in_AIConfidence),False,if(CInt(cdbl(in_AIConfidence)*100)&gt;90,False,true))]" DisplayName="AI Confidence &gt;9" sap:VirtualizedContainerService.HintSize="98,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4" True="{x:Reference __ReferenceID0}">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <av:Point x:Key="ShapeLocation">990.5,496.5</av:Point>
                                 <av:Size x:Key="ShapeSize">98,87</av:Size>
-                                <av:PointCollection x:Key="TrueConnector">990.5,540 110,540 110,366</av:PointCollection>
+                                <av:PointCollection x:Key="TrueConnector">990.5,540 0,540 0,344.5 10,344.5</av:PointCollection>
                                 <av:PointCollection x:Key="FalseConnector">1088.5,540 1174,540 1174,586.5</av:PointCollection>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <FlowDecision.True>
-                              <x:Reference>__ReferenceID0</x:Reference>
-                            </FlowDecision.True>
                             <FlowDecision.False>
-                              <FlowDecision x:Name="__ReferenceID7" DisplayName="AI Type match?" sap:VirtualizedContainerService.HintSize="86,87" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
-                                <FlowDecision.Condition>
-                                  <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="if(String.IsNullOrEmpty(in_AIType),False,if(in_AIType.Trim.ToLower=strType.ToLower,False,true))" />
-                                </FlowDecision.Condition>
+                              <FlowDecision x:Name="__ReferenceID7" Condition="[if(String.IsNullOrEmpty(in_AIType),False,if(in_AIType.Trim.ToLower=strType.ToLower,False,true))]" DisplayName="AI Type match?" sap:VirtualizedContainerService.HintSize="86,87" sap2010:WorkflowViewState.IdRef="FlowDecision_5" True="{x:Reference __ReferenceID0}">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <av:Point x:Key="ShapeLocation">1131,586.5</av:Point>
                                     <av:Size x:Key="ShapeSize">86,87</av:Size>
-                                    <av:PointCollection x:Key="TrueConnector">1131,630 110,630 110,366</av:PointCollection>
+                                    <av:PointCollection x:Key="TrueConnector">1131,630 302,630 302,344.5 272,344.5</av:PointCollection>
                                     <av:PointCollection x:Key="FalseConnector">1217,630 1524.5,630 1524.5,744</av:PointCollection>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <FlowDecision.True>
-                                  <x:Reference>__ReferenceID0</x:Reference>
-                                </FlowDecision.True>
                                 <FlowDecision.False>
                                   <FlowStep x:Name="__ReferenceID5">
                                     <sap:WorkflowViewStateService.ViewState>
@@ -392,5 +360,6 @@
         </FlowDecision.False>
       </FlowDecision>
     </Flowchart>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Duplicate Check : &quot;+out_IsDuplicateCheck.ToString]" />
   </Sequence>
 </Activity>
