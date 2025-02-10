@@ -1,0 +1,41 @@
+{
+
+    "documents": [
+
+    {
+
+      "raw_email": {
+
+        "body": {
+
+          "html": "<p>Hi Jason,Sorry , it slipped from my end.VC1 copied for # 3825535-113 to Plant 1800.Best regards,Maheswara DesaiSpecialist- Cost AccountingNovonesisPlot No. 32, 47-50, EPIP AreaWhitefield560066 Bangalore IndiaMobile: +919036826151E-mail: mhde@novonesis.com<mailto:mhde@novonesis.com>Teams: mhde@novozymes.com<sip:mhde@novozymes.com>Find Novonesis on: Web<https://www.novonesis.com> | LinkedIn<https://www.linkedin.com/company/novonesis> | X<https://twitter.com/novonesis> | Facebook<https://www.facebook.com/novonesisbio> | Instagram<https://www.instagram.com/novonesis/>Novozymes South Asia Private Limited (reg. no.: U24299KA1998PTC024038). Registered address: Plot No.32, 47-50, EPIP Area, Bangalore, Karnataka 560066, India, part of Novonesis Group.This e-mail (including any attachments) is for the intended addressee(s) only and may contain confidential and/or proprietary information protected by law. You are hereby notified that any unauthorized reading, disclosure, copying or distribution of this e-mail or use of information herein is strictly prohibited. If you are not an intended recipient, you should delete this e-mail immediately. Thank you.Your personal data will be processed in accordance with our privacy policy<https://www.novonesis.com/en/privacy-policy>.</p>"
+
+        },
+
+        "headers": {
+
+          "raw": "Message-ID: <<DB9PR10MB58594F328831834CE7E61B66D1EC2@DB9PR10MB5859.EURPRD10.PROD.OUTLOOK.COM>>\nDate: Mon, 27 Jan 2025 04:45:04 +00:00\nSubject: RE: Need to set up Sustine 450 part number 3825535-113 and 3825535-010 in plant 1800\nFrom: MHDE@novozymes.com\nTo: JSWM@novozymes.com"
+
+        }
+
+      },
+
+      "user_properties": {
+
+        "string:City": "Bucharest"
+
+      }
+
+    }
+
+ 
+
+  ],
+
+  "include_comments": false,
+
+  "threshold": 0.25,
+
+  "transform_tag": "generic.0.CONVKER5"
+
+}

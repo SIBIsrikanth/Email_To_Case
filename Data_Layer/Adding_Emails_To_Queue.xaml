@@ -5,7 +5,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2027,3276</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2027,3620</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Adding_Emails_Queue_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -121,7 +121,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Adding_Emails_Queue" sap:VirtualizedContainerService.HintSize="2037,3171" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Adding_Emails_Queue" sap:VirtualizedContainerService.HintSize="2037,3395" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="umm:Office365Message[]" Name="lstEmails" />
       <Variable x:TypeArguments="x:String" Name="strLatestMailBody" />
@@ -152,6 +152,7 @@
         <InArgument x:TypeArguments="x:String" x:Key="in_ConfigFile">Data\Input\Config.xlsx</InArgument>
         <InArgument x:TypeArguments="s:String[]" x:Key="in_ConfigSheets">[{"Settings","Constants"}]</InArgument>
         <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="out_Config">[in_Config]</OutArgument>
+        <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_DtRegionMapping" />
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <Assign sap:VirtualizedContainerService.HintSize="1975,61" sap2010:WorkflowViewState.IdRef="Assign_9">
@@ -168,25 +169,25 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1975,2806" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[strMailFolderName.Split(&quot;,&quot;.ToCharArray)]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1975,3030" sap2010:WorkflowViewState.IdRef="ForEach`1_12" Values="[strMailFolderName.Split(&quot;,&quot;.ToCharArray)]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="mailAccountName" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1939,2681" sap2010:WorkflowViewState.IdRef="Sequence_12">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1939,2905" sap2010:WorkflowViewState.IdRef="Sequence_12">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_Config(&quot;ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;ApplicationSecret&quot;).ToString]" AuthenticationType="InteractiveToken" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="1877,2570" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="Custom" Services="Files, Mail, Shared" Tenant="[in_Config(&quot;TenantID&quot;).ToString]">
+            <uma:Office365ApplicationScope CertificateAsBase64="{x:Null}" CertificatePassword="{x:Null}" ContinueOnError="{x:Null}" OAuth2Username="{x:Null}" Password="{x:Null}" SecureApplicationSecret="{x:Null}" SecurePassword="{x:Null}" Timeout="{x:Null}" Username="{x:Null}" ApplicationId="[in_Config(&quot;ApplicationID&quot;).ToString]" ApplicationSecret="[in_Config(&quot;ApplicationSecret&quot;).ToString]" AuthenticationType="InteractiveToken" DisplayName="Microsoft Office 365 Scope" Environment="Global" sap:VirtualizedContainerService.HintSize="1877,2794" sap2010:WorkflowViewState.IdRef="Office365ApplicationScope_1" OAuthApplication="Custom" Services="Files, Mail, Shared" Tenant="[in_Config(&quot;TenantID&quot;).ToString]">
               <uma:Office365ApplicationScope.Body>
                 <ActivityAction x:TypeArguments="mg:GraphServiceClient">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="mg:GraphServiceClient" Name="ParentScope" />
                   </ActivityAction.Argument>
-                  <Sequence sap:VirtualizedContainerService.HintSize="1843,2483" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <Sequence sap:VirtualizedContainerService.HintSize="1843,2707" sap2010:WorkflowViewState.IdRef="Sequence_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -211,7 +212,26 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:CommentOut>
                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1781,92" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Info" Message="[&quot;Mail Account Name : &quot;+mailAccountName.ToString]" />
-                    <umam:GetMail EmailId="{x:Null}" Account="[mailAccountName]" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="1781,25" sap2010:WorkflowViewState.IdRef="GetMail_4" MailFolder="[in_Config(&quot;Mail_InboxFolder&quot;).ToString]" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Query="ReceivedDateTime ge 2024-08-26T00:00:00Z And ReceivedDateTime le 2024-08-26T23:59:59Z" Results="[lstEmails]" Top="[int32.MaxValue]" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1781,92" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;Filter Condition : &quot;+&quot;ReceivedDateTime ge &quot;+DateTime.Now.AddDays(-3).ToString(&quot;yyyy-MM-dd&quot;)+&quot;T00:00:00Z And ReceivedDateTime le &quot;+DateTime.Now.AddDays(-1).ToString(&quot;yyyy-MM-dd&quot;)+&quot;T23:59:59Z&quot;]" />
+                    <umam:GetMail EmailId="{x:Null}" Account="[mailAccountName]" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="1781,25" sap2010:WorkflowViewState.IdRef="GetMail_6" MailFolder="[in_Config(&quot;Mail_InboxFolder&quot;).ToString]" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Query="[&quot;ReceivedDateTime ge &quot;+DateTime.Now.AddDays(-3).ToString(&quot;yyyy-MM-dd&quot;)+&quot;T00:00:00Z And ReceivedDateTime le &quot;+DateTime.Now.AddDays(-1).ToString(&quot;yyyy-MM-dd&quot;)+&quot;T23:59:59Z&quot;]" Results="[lstEmails]" Top="[int32.MaxValue]" />
+                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1781,52" sap2010:WorkflowViewState.IdRef="CommentOut_11">
+                      <ui:CommentOut.Body>
+                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="400,136" sap2010:WorkflowViewState.IdRef="Sequence_43">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <umam:GetMail EmailId="{x:Null}" Account="[mailAccountName]" DisplayName="Get Mail" GetAsHTML="False" sap:VirtualizedContainerService.HintSize="338,25" sap2010:WorkflowViewState.IdRef="GetMail_5" MailFolder="[in_Config(&quot;Mail_InboxFolder&quot;).ToString]" MarkAsRead="False" OnlyUnreadMessages="False" OrderByDate="NewestFirst" Query="InternetMessageId eq '&lt;DB9PR10MB58594F328831834CE7E61B66D1EC2@DB9PR10MB5859.EURPRD10.PROD.OUTLOOK.COM&gt;'" Results="[lstEmails]" Top="1" />
+                        </Sequence>
+                      </ui:CommentOut.Body>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:CommentOut>
                     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1781,92" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;Total email count : &quot;+lstEmails.Count.ToString]" />
                     <ui:ForEach x:TypeArguments="umm:Office365Message" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1781,1951" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[lstEmails]">
                       <ui:ForEach.Body>
@@ -288,7 +308,7 @@
                                   <Flowchart.StartNode>
                                     <x:Reference>__ReferenceID21</x:Reference>
                                   </Flowchart.StartNode>
-                                  <FlowDecision x:Name="__ReferenceID21" Condition="[EachEmail.Sender.Address.ToString.ToLower=&quot;noreply@novonesis.com&quot; Or&#xA;in_Config(&quot;No-ReplyList&quot;).ToString.tolower.Split(&quot;,&quot;C).Any(Function(x) x.Equals(EachEmail.Sender.Address.ToString.ToLower.Trim))]" DisplayName="Filtering Junk email...?" sap:VirtualizedContainerService.HintSize="122,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                                  <FlowDecision x:Name="__ReferenceID21" Condition="[EachEmail.Sender.Address.ToString.ToLower=&quot;noreply@novonesis.com&quot; Or EachEmail.Sender.Address.ToString.ToLower=&quot;quarantine@messaging.microsoft.com&quot; Or&#xA;in_Config(&quot;No-ReplyList&quot;).ToString.tolower.Split(&quot;,&quot;C).Any(Function(x) x.Equals(EachEmail.Sender.Address.ToString.ToLower.Trim))]" DisplayName="Filtering Junk email...?" sap:VirtualizedContainerService.HintSize="122,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -517,72 +537,28 @@
                                                                 </sap:WorkflowViewStateService.ViewState>
                                                                 <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="AddQueueItem_6" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="EmptyBody,No Attachment">
                                                                   <ui:AddQueueItem.ItemInformation>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="ReceivedDate">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.ReceivedDateTime.ToString" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="FromEmailAddress">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.From.Address" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="ToAndCCEmailAddress">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="toAndCCEmails" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="SenderName">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.Sender.DisplayName.ToString.Trim" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="MessageID">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.InternetMessageId.ToString" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="emailSubject">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.Subject" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="CCEmailAddress">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.CC.ToString" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="DeliveryNumber">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strDeliveryNumber" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="SalesOrderNumber">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strSalesOrderNumber" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="PurchaseOrderNumber">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strPurchaseOrderNumber" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="CM_Type">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAIType" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="CM_SubType">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAISubType" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="CM_Prediction">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAIPrediction" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="MailBoxName">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="mailAccountName" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="BusinessCriticality">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strBusinessCriticality" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="HTMLBody">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.BodyAsHtml.ToString" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="FullBody">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.Body" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="LatestMailBody">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strLatestMailBody" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="EmailCreationTime">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DateTime.Now.ToString" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:Boolean" x:Key="IsLatestMailBody">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="blnLatestMailBodyIsEmpty" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:String" x:Key="EmailAttachmentType">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAttachMentType" />
-                                                                    </InArgument>
-                                                                    <InArgument x:TypeArguments="x:Boolean" x:Key="IsAttachmentFound">
-                                                                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="blnAttachmentFound" />
-                                                                    </InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="ReceivedDate">[EachEmail.ReceivedDateTime.ToString]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="FromEmailAddress">[EachEmail.From.Address]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="ToAndCCEmailAddress">[toAndCCEmails]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="SenderName">[EachEmail.Sender.DisplayName.ToString.Trim]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="MessageID">[EachEmail.InternetMessageId.ToString]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="emailSubject">[EachEmail.Subject]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="CCEmailAddress">[EachEmail.CC.ToString]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="DeliveryNumber">[strDeliveryNumber]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="SalesOrderNumber">[strSalesOrderNumber]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="PurchaseOrderNumber">[strPurchaseOrderNumber]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="CM_Type">[strAIType]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="CM_SubType">[strAISubType]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="CM_Prediction">[strAIPrediction]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="MailBoxName">[mailAccountName]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="BusinessCriticality">[strBusinessCriticality]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="HTMLBody">[EachEmail.BodyAsHtml.ToString]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="FullBody">[EachEmail.Body]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="LatestMailBody">[strLatestMailBody]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="EmailCreationTime">[DateTime.Now.ToString]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:Boolean" x:Key="IsLatestMailBody">[blnLatestMailBodyIsEmpty]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:String" x:Key="EmailAttachmentType">[strAttachMentType]</InArgument>
+                                                                    <InArgument x:TypeArguments="x:Boolean" x:Key="IsAttachmentFound">[blnAttachmentFound]</InArgument>
                                                                   </ui:AddQueueItem.ItemInformation>
                                                                   <sap:WorkflowViewStateService.ViewState>
                                                                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -803,27 +779,13 @@
                                                           <ui:DeleteFolderX DisplayName="Delete Folder" sap:VirtualizedContainerService.HintSize="540,80" sap2010:WorkflowViewState.IdRef="DeleteFolderX_1" Path="[strPDFAttachmentFolder]" Recursive="True" />
                                                           <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="540,25" sap2010:WorkflowViewState.IdRef="AddQueueItem_4" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="Empty body with attachment">
                                                             <ui:AddQueueItem.ItemInformation>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="ReceivedDate">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.ReceivedDateTime.ToString" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="FromEmailAddress">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.From.Address" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="ToAndCCEmailAddress">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="toAndCCEmails" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="SenderName">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.Sender.DisplayName.ToString.Trim" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="MessageID">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.InternetMessageId.ToString" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="emailSubject">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.Subject" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="CCEmailAddress">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.CC.ToString" />
-                                                              </InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="ReceivedDate">[EachEmail.ReceivedDateTime.ToString]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="FromEmailAddress">[EachEmail.From.Address]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="ToAndCCEmailAddress">[toAndCCEmails]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="SenderName">[EachEmail.Sender.DisplayName.ToString.Trim]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="MessageID">[EachEmail.InternetMessageId.ToString]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="emailSubject">[EachEmail.Subject]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="CCEmailAddress">[EachEmail.CC.ToString]</InArgument>
                                                               <InArgument x:TypeArguments="x:String" x:Key="DeliveryNumber">
                                                                 <Literal x:TypeArguments="x:String" Value="" />
                                                               </InArgument>
@@ -833,42 +795,20 @@
                                                               <InArgument x:TypeArguments="x:String" x:Key="PurchaseOrderNumber">
                                                                 <Literal x:TypeArguments="x:String" Value="" />
                                                               </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="CM_Type">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAIType" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="CM_SubType">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAISubType" />
-                                                              </InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="CM_Type">[strAIType]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="CM_SubType">[strAISubType]</InArgument>
                                                               <InArgument x:TypeArguments="x:String" x:Key="CM_Prediction">
                                                                 <Literal x:TypeArguments="x:String" Value="" />
                                                               </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="MailBoxName">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="mailAccountName" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="BusinessCriticality">
-                                                                <Literal x:TypeArguments="x:String">Normal</Literal>
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="HTMLBody">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.BodyAsHtml.ToString" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="FullBody">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.Body" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="LatestMailBody">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strLatestMailBody" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="EmailCreationTime">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DateTime.Now.ToString" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:Boolean" x:Key="IsLatestMailBody">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="blnLatestMailBodyIsEmpty" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="EmailAttachmentType">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAttachMentType" />
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:Boolean" x:Key="IsAttachmentFound">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="blnAttachmentFound" />
-                                                              </InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="MailBoxName">[mailAccountName]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="BusinessCriticality">Normal</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="HTMLBody">[EachEmail.BodyAsHtml.ToString]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="FullBody">[EachEmail.Body]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="LatestMailBody">[strLatestMailBody]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="EmailCreationTime">[DateTime.Now.ToString]</InArgument>
+                                                              <InArgument x:TypeArguments="x:Boolean" x:Key="IsLatestMailBody">[blnLatestMailBodyIsEmpty]</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="EmailAttachmentType">[strAttachMentType]</InArgument>
+                                                              <InArgument x:TypeArguments="x:Boolean" x:Key="IsAttachmentFound">[blnAttachmentFound]</InArgument>
                                                             </ui:AddQueueItem.ItemInformation>
                                                             <sap:WorkflowViewStateService.ViewState>
                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -991,7 +931,7 @@
                                                           <InArgument x:TypeArguments="x:String">[Environment.CurrentDirectory+"/Subject_Body+"+DateTime.Now.ToString("dd_MM_yyyy_hh_mm_ss")+".txt"]</InArgument>
                                                         </Assign.Value>
                                                       </Assign>
-                                                      <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="[strSubjectBodyFilePath]" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[EachEmail.Subject+vbNewLine+if(EachEmail.Body.Length&gt;6500,EachEmail.Body.Substring(0,6499),EachEmail.Body.ToString)]">
+                                                      <ui:WriteTextFile File="{x:Null}" DisplayName="Write Text File" FileName="[strSubjectBodyFilePath]" sap:VirtualizedContainerService.HintSize="434,133" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[EachEmail.Subject+vbNewLine+if(EachEmail.Body.Length&gt;6500,EachEmail.Body.Substring(0,6499),EachEmail.Body.ToString)]">
                                                         <sap:WorkflowViewStateService.ViewState>
                                                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1021,7 +961,7 @@
                                                             <av:PointCollection x:Key="ConnectorLocation">950,699.5 950,746.5</av:PointCollection>
                                                           </scg:Dictionary>
                                                         </sap:WorkflowViewStateService.ViewState>
-                                                        <Sequence DisplayName="AI Clasiification" sap:VirtualizedContainerService.HintSize="200,81" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                                        <Sequence DisplayName="AI Clasiification" sap:VirtualizedContainerService.HintSize="1352,663" sap2010:WorkflowViewState.IdRef="Sequence_6">
                                                           <Sequence.Variables>
                                                             <Variable x:TypeArguments="sd:DataTable" Name="dtLableProperties" />
                                                           </Sequence.Variables>
@@ -1030,35 +970,19 @@
                                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                             </scg:Dictionary>
                                                           </sap:WorkflowViewStateService.ViewState>
-                                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CM_Prediction workflow" sap:VirtualizedContainerService.HintSize="779,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Application_Layer\CommunicationMining_Api\CM_Prediction.xaml">
+                                                          <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke CM_Prediction workflow" sap:VirtualizedContainerService.HintSize="1290,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Application_Layer\CommunicationMining_Api\CM_Prediction.xaml">
                                                             <ui:InvokeWorkflowFile.Arguments>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="in_PredictionAPi">
-                                                                <Literal x:TypeArguments="x:String">https://cloud.uipath.com/novonesis_rpa/Novonesis/reinfer_/api/v1/datasets/na_emails_classification/na_emails/labellers/2142/predict-raw-emails</Literal>
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="in_CM_Token">
-                                                                <Literal x:TypeArguments="x:String">WSUSSJU7O645RQBSJFUUHC7ZRMPUTBKKKKSD2KOLX763MCXO</Literal>
-                                                              </InArgument>
-                                                              <InArgument x:TypeArguments="umm:Office365Message" x:Key="in_OutlookEmail">
-                                                                <mva:VisualBasicValue x:TypeArguments="umm:Office365Message" ExpressionText="EachEmail" />
-                                                              </InArgument>
-                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AIPrediction">
-                                                                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strAIPrediction" />
-                                                              </OutArgument>
-                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AIType">
-                                                                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strAIType" />
-                                                              </OutArgument>
-                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AISubType">
-                                                                <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="strAISubType" />
-                                                              </OutArgument>
-                                                              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_LabelProperties">
-                                                                <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="dtLableProperties" />
-                                                              </OutArgument>
-                                                              <InArgument x:TypeArguments="x:String" x:Key="strLatestEmailBody">
-                                                                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strLatestMailBody" />
-                                                              </InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="in_PredictionAPi">https://cloud.uipath.com/novonesis_rpa/Novonesis/reinfer_/api/v1/datasets/na_emails_classification/na_emails/labellers/2142/predict-raw-emails</InArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="in_CM_Token">WSUSSJU7O645RQBSJFUUHC7ZRMPUTBKKKKSD2KOLX763MCXO</InArgument>
+                                                              <InArgument x:TypeArguments="umm:Office365Message" x:Key="in_OutlookEmail">[EachEmail]</InArgument>
+                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AIPrediction">[strAIPrediction]</OutArgument>
+                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AIType">[strAIType]</OutArgument>
+                                                              <OutArgument x:TypeArguments="x:String" x:Key="out_AISubType">[strAISubType]</OutArgument>
+                                                              <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_LabelProperties">[dtLableProperties]</OutArgument>
+                                                              <InArgument x:TypeArguments="x:String" x:Key="strLatestEmailBody">[strLatestMailBody]</InArgument>
                                                             </ui:InvokeWorkflowFile.Arguments>
                                                           </ui:InvokeWorkflowFile>
-                                                          <If Condition="[If(String.IsNullOrEmpty(strAIType),False,if(strAIType.ToLower.Contains(&quot;urgent&quot;),True,False))]" DisplayName="If type is urgent?" sap:VirtualizedContainerService.HintSize="779,331" sap2010:WorkflowViewState.IdRef="If_2">
+                                                          <If Condition="[If(String.IsNullOrEmpty(strAIType),False,if(strAIType.ToLower.Contains(&quot;urgent&quot;),True,False))]" DisplayName="If type is urgent?" sap:VirtualizedContainerService.HintSize="1290,399" sap2010:WorkflowViewState.IdRef="If_2">
                                                             <sap:WorkflowViewStateService.ViewState>
                                                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1084,18 +1008,19 @@
                                                               </Sequence>
                                                             </If.Then>
                                                             <If.Else>
-                                                              <If Condition="[CDbl(dtLableProperties(0)(&quot;value&quot;))&gt;-5 and CDbl(dtLableProperties(1)(&quot;value&quot;))&gt;-5]" DisplayName="If tone and quality of service is greater thann -5" sap:VirtualizedContainerService.HintSize="334,52" sap2010:WorkflowViewState.IdRef="If_1">
+                                                              <If Condition="[CDbl(dtLableProperties(0)(&quot;value&quot;))&lt;-5 and CDbl(dtLableProperties(1)(&quot;value&quot;))&lt;-5]" DisplayName="If tone and quality of service is greater thann -5" sap:VirtualizedContainerService.HintSize="845,240" sap2010:WorkflowViewState.IdRef="If_1">
                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                   </scg:Dictionary>
                                                                 </sap:WorkflowViewStateService.ViewState>
                                                                 <If.Then>
-                                                                  <Sequence sap:VirtualizedContainerService.HintSize="400,172" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                                                  <Sequence sap:VirtualizedContainerService.HintSize="400,81" sap2010:WorkflowViewState.IdRef="Sequence_7">
                                                                     <sap:WorkflowViewStateService.ViewState>
                                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                       </scg:Dictionary>
                                                                     </sap:WorkflowViewStateService.ViewState>
                                                                     <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_2">
@@ -1109,10 +1034,11 @@
                                                                   </Sequence>
                                                                 </If.Then>
                                                                 <If.Else>
-                                                                  <Sequence sap:VirtualizedContainerService.HintSize="400,172" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                                                  <Sequence sap:VirtualizedContainerService.HintSize="400,81" sap2010:WorkflowViewState.IdRef="Sequence_8">
                                                                     <sap:WorkflowViewStateService.ViewState>
                                                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                                                       </scg:Dictionary>
                                                                     </sap:WorkflowViewStateService.ViewState>
                                                                     <Assign sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_3">
@@ -1136,7 +1062,7 @@
                                                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                 <av:Point x:Key="ShapeLocation">892.5,746.5</av:Point>
                                                                 <av:Size x:Key="ShapeSize">115,87</av:Size>
-                                                                <av:PointCollection x:Key="TrueConnector">892.5,790 862.5,790 862.5,836.5 1125.5,836.5 1125.5,866.5</av:PointCollection>
+                                                                <av:PointCollection x:Key="TrueConnector">892.5,790 862.5,790 862.5,866.5 1125.5,866.5 1125.5,896.5</av:PointCollection>
                                                                 <av:PointCollection x:Key="FalseConnector">1007.5,790 1037.5,790 1037.5,794.02 1057.5,794.02</av:PointCollection>
                                                               </scg:Dictionary>
                                                             </sap:WorkflowViewStateService.ViewState>
@@ -1145,10 +1071,10 @@
                                                                 <sap:WorkflowViewStateService.ViewState>
                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                                                                    <av:Point x:Key="ShapeLocation">1091,866.5</av:Point>
+                                                                    <av:Point x:Key="ShapeLocation">1091,896.5</av:Point>
                                                                     <av:Size x:Key="ShapeSize">138,87</av:Size>
-                                                                    <av:PointCollection x:Key="TrueConnector">1091,910 1041,910 1041,1004</av:PointCollection>
-                                                                    <av:PointCollection x:Key="FalseConnector">1229,910 1480,910 1480,979.5</av:PointCollection>
+                                                                    <av:PointCollection x:Key="TrueConnector">1091,940 1041,940 1041,1004</av:PointCollection>
+                                                                    <av:PointCollection x:Key="FalseConnector">1229,940 1480,940 1480,979.5</av:PointCollection>
                                                                   </scg:Dictionary>
                                                                 </sap:WorkflowViewStateService.ViewState>
                                                                 <FlowDecision.True>
@@ -1184,72 +1110,28 @@
                                                                         </sap:WorkflowViewStateService.ViewState>
                                                                         <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Add Queue Item" sap:VirtualizedContainerService.HintSize="200,25" sap2010:WorkflowViewState.IdRef="AddQueueItem_5" Priority="Normal" QueueType="[in_Config(&quot;OrchestratorQueueName&quot;).ToString]" Reference="[strAIType+&quot; &quot;+strAISubType]">
                                                                           <ui:AddQueueItem.ItemInformation>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="ReceivedDate">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.ReceivedDateTime.ToString" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="FromEmailAddress">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.From.Address" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="ToAndCCEmailAddress">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="toAndCCEmails" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="SenderName">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.Sender.DisplayName.ToString.Trim" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="MessageID">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.InternetMessageId.ToString" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="emailSubject">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.Subject" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="CCEmailAddress">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.CC.ToString" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="DeliveryNumber">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strDeliveryNumber" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="SalesOrderNumber">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strSalesOrderNumber" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="PurchaseOrderNumber">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strPurchaseOrderNumber" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="CM_Type">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAIType" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="CM_SubType">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAISubType" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="CM_Prediction">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAIPrediction" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="MailBoxName">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="mailAccountName" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="BusinessCriticality">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strBusinessCriticality" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="HTMLBody">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.BodyAsHtml.ToString" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="FullBody">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="EachEmail.Body" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="LatestMailBody">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strLatestMailBody" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="EmailCreationTime">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="DateTime.Now.ToString" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:Boolean" x:Key="IsLatestMailBody">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="blnLatestMailBodyIsEmpty" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:String" x:Key="EmailAttachmentType">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="strAttachMentType" />
-                                                                            </InArgument>
-                                                                            <InArgument x:TypeArguments="x:Boolean" x:Key="IsAttachmentFound">
-                                                                              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="blnAttachmentFound" />
-                                                                            </InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="ReceivedDate">[EachEmail.ReceivedDateTime.ToString]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="FromEmailAddress">[EachEmail.From.Address]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="ToAndCCEmailAddress">[toAndCCEmails]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="SenderName">[EachEmail.Sender.DisplayName.ToString.Trim]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="MessageID">[EachEmail.InternetMessageId.ToString]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="emailSubject">[EachEmail.Subject]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="CCEmailAddress">[EachEmail.CC.ToString]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="DeliveryNumber">[strDeliveryNumber]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="SalesOrderNumber">[strSalesOrderNumber]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="PurchaseOrderNumber">[strPurchaseOrderNumber]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="CM_Type">[strAIType]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="CM_SubType">[strAISubType]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="CM_Prediction">[strAIPrediction]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="MailBoxName">[mailAccountName]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="BusinessCriticality">[strBusinessCriticality]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="HTMLBody">[EachEmail.BodyAsHtml.ToString]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="FullBody">[EachEmail.Body]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="LatestMailBody">[strLatestMailBody]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="EmailCreationTime">[DateTime.Now.ToString]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:Boolean" x:Key="IsLatestMailBody">[blnLatestMailBodyIsEmpty]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:String" x:Key="EmailAttachmentType">[strAttachMentType]</InArgument>
+                                                                            <InArgument x:TypeArguments="x:Boolean" x:Key="IsAttachmentFound">[blnAttachmentFound]</InArgument>
                                                                           </ui:AddQueueItem.ItemInformation>
                                                                           <sap:WorkflowViewStateService.ViewState>
                                                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -1429,7 +1311,7 @@
                                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                     <av:Point x:Key="ShapeLocation">1057.5,763.52</av:Point>
                                                                     <av:Size x:Key="ShapeSize">262,61</av:Size>
-                                                                    <av:PointCollection x:Key="ConnectorLocation">1188.5,824.52 1188.5,854.52 1160,854.52 1160,866.5</av:PointCollection>
+                                                                    <av:PointCollection x:Key="ConnectorLocation">1188.5,824.52 1188.5,854.52 1160,854.52 1160,896.5</av:PointCollection>
                                                                   </scg:Dictionary>
                                                                 </sap:WorkflowViewStateService.ViewState>
                                                                 <Assign sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_16">
