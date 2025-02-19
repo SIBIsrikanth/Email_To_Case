@@ -12,7 +12,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>2190,3277</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>2190,3417</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CM_Prediction_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="96">
@@ -121,7 +121,7 @@
       <AssemblyReference>System.Data.Entity</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CM_Prediction" sap:VirtualizedContainerService.HintSize="2200,3212" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CM_Prediction" sap:VirtualizedContainerService.HintSize="2200,3352" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="umm:Office365Message[]" Name="emails" />
       <Variable x:TypeArguments="x:String" Name="strRawBody" />
@@ -134,7 +134,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence DisplayName="CM_Prediction" sap:VirtualizedContainerService.HintSize="2138,3101" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence DisplayName="CM_Prediction" sap:VirtualizedContainerService.HintSize="2138,3241" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="strApplicationSecret" />
         <Variable x:TypeArguments="x:String" Name="strApplicationID" />
@@ -256,7 +256,7 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
       </ui:HttpClient>
-      <If Condition="[iResponseStatus=200 or iResponseStatus=202 or iResponseStatus=201]" sap:VirtualizedContainerService.HintSize="2076,2154" sap2010:WorkflowViewState.IdRef="If_1">
+      <If Condition="[iResponseStatus=200 or iResponseStatus=202 or iResponseStatus=201]" sap:VirtualizedContainerService.HintSize="2076,2294" sap2010:WorkflowViewState.IdRef="If_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -264,21 +264,22 @@
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
         <If.Then>
-          <Sequence sap:VirtualizedContainerService.HintSize="1631,1995" sap2010:WorkflowViewState.IdRef="Sequence_18">
+          <Sequence sap:VirtualizedContainerService.HintSize="1631,2135" sap2010:WorkflowViewState.IdRef="Sequence_18">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="1569,52" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jsonObject]" JsonString="[strResonseContent]">
+            <ui:DeserializeJson x:TypeArguments="njl:JObject" DisplayName="Deserialize JSON" sap:VirtualizedContainerService.HintSize="1569,60" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jsonObject]" JsonString="[strResonseContent]">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:DeserializeJson>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1569,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[strResonseContent]" />
             <Sequence DisplayName="Predictions" sap:VirtualizedContainerService.HintSize="1569,1580" sap2010:WorkflowViewState.IdRef="Sequence_5">
               <Sequence.Variables>
                 <Variable x:TypeArguments="x:Double" Name="dblMaxProbability" />
